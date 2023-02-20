@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectManagerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CostOfWork">
+    <Key>
+      <PropertyRef Name="MycroobjectId" />
+      <PropertyRef Name="TypeOfWorkId" />
+    </Key>
+    <Property Name="MycroobjectId" Type="Int32" Nullable="false" />
+    <Property Name="TypeOfWorkId" Type="Int32" Nullable="false" />
+    <Property Name="Cost_h_" Type="Decimal" Precision="3" Scale="2" />
+    <NavigationProperty Name="Mycroobject" Relationship="Self.FK_CostOfWork_Mycroobject" FromRole="CostOfWork" ToRole="Mycroobject" />
+    <NavigationProperty Name="TypeOfWork" Relationship="Self.FK_CostOfWork_TypeOfWork" FromRole="CostOfWork" ToRole="TypeOfWork" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Gender" FromRole="Gender" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Mycroobject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CostOfWorks" Relationship="Self.FK_CostOfWork_Mycroobject" FromRole="Mycroobject" ToRole="CostOfWork" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Mycroobject" FromRole="Mycroobject" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProjectTeamId" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+    <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LaborCost_h_" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsCompleted" Type="Boolean" />
+    <NavigationProperty Name="ProjectTeam" Relationship="Self.FK_Project_ProjectTeam" FromRole="Project" ToRole="ProjectTeam" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Project" FromRole="Project" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="ProjectTeam">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK_Project_ProjectTeam" FromRole="ProjectTeam" ToRole="Project" />
+    <NavigationProperty Name="Users" Relationship="Self.TeamMember" FromRole="ProjectTeam" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExecutorId" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+    <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MycroobjectId" Type="Int32" Nullable="false" />
+    <Property Name="TypeOFWorkId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Mycroobject" Relationship="Self.FK_Task_Mycroobject" FromRole="Task" ToRole="Mycroobject" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Task" ToRole="Project" />
+    <NavigationProperty Name="TypeOfWork" Relationship="Self.FK_Task_TypeOfWork" FromRole="Task" ToRole="TypeOfWork" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
+  </EntityType>
+  <EntityType Name="TypeOfUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_TypeOfUser" FromRole="TypeOfUser" ToRole="User" />
+  </EntityType>
+  <EntityType Name="TypeOfWork">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CostOfWorks" Relationship="Self.FK_CostOfWork_TypeOfWork" FromRole="TypeOfWork" ToRole="CostOfWork" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_TypeOfWork" FromRole="TypeOfWork" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TypeOfUserId" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passwrord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Gender1" Relationship="Self.FK_User_Gender" FromRole="User" ToRole="Gender" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_User" FromRole="User" ToRole="Task" />
+    <NavigationProperty Name="TypeOfUser" Relationship="Self.FK_User_TypeOfUser" FromRole="User" ToRole="TypeOfUser" />
+    <NavigationProperty Name="ProjectTeams" Relationship="Self.TeamMember" FromRole="User" ToRole="ProjectTeam" />
+    <Property Name="SpecializationId" Type="Int32" />
+    <NavigationProperty Name="Specialization" Relationship="ProjectManagerDBModel.FK_User_Specialization" FromRole="User" ToRole="Specialization" />
+  </EntityType>
+  <Association Name="FK_CostOfWork_Mycroobject">
+    <End Role="Mycroobject" Type="Self.Mycroobject" Multiplicity="1" />
+    <End Role="CostOfWork" Type="Self.CostOfWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mycroobject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CostOfWork">
+        <PropertyRef Name="MycroobjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CostOfWork_TypeOfWork">
+    <End Role="TypeOfWork" Type="Self.TypeOfWork" Multiplicity="1" />
+    <End Role="CostOfWork" Type="Self.CostOfWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfWork">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CostOfWork">
+        <PropertyRef Name="TypeOfWorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Mycroobject">
+    <End Role="Mycroobject" Type="Self.Mycroobject" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mycroobject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="MycroobjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_ProjectTeam">
+    <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTeam">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectTeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_TypeOfWork">
+    <End Role="TypeOfWork" Type="Self.TypeOfWork" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfWork">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="TypeOFWorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ExecutorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_TypeOfUser">
+    <End Role="TypeOfUser" Type="Self.TypeOfUser" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="TypeOfUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeamMember">
+    <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ProjectManagerDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CostOfWorks" EntityType="Self.CostOfWork" />
+    <EntitySet Name="Genders" EntityType="Self.Gender" />
+    <EntitySet Name="Mycroobjects" EntityType="Self.Mycroobject" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="ProjectTeams" EntityType="Self.ProjectTeam" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="TypeOfUsers" EntityType="Self.TypeOfUser" />
+    <EntitySet Name="TypeOfWorks" EntityType="Self.TypeOfWork" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_CostOfWork_Mycroobject" Association="Self.FK_CostOfWork_Mycroobject">
+      <End Role="Mycroobject" EntitySet="Mycroobjects" />
+      <End Role="CostOfWork" EntitySet="CostOfWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CostOfWork_TypeOfWork" Association="Self.FK_CostOfWork_TypeOfWork">
+      <End Role="TypeOfWork" EntitySet="TypeOfWorks" />
+      <End Role="CostOfWork" EntitySet="CostOfWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Mycroobject" Association="Self.FK_Task_Mycroobject">
+      <End Role="Mycroobject" EntitySet="Mycroobjects" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_ProjectTeam" Association="Self.FK_Project_ProjectTeam">
+      <End Role="ProjectTeam" EntitySet="ProjectTeams" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Project" Association="Self.FK_Task_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_TypeOfWork" Association="Self.FK_Task_TypeOfWork">
+      <End Role="TypeOfWork" EntitySet="TypeOfWorks" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_TypeOfUser" Association="Self.FK_User_TypeOfUser">
+      <End Role="TypeOfUser" EntitySet="TypeOfUsers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="TeamMember" Association="Self.TeamMember">
+      <End Role="ProjectTeam" EntitySet="ProjectTeams" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Specializations" EntityType="ProjectManagerDBModel.Specialization" />
+    <AssociationSet Name="FK_User_Specialization" Association="ProjectManagerDBModel.FK_User_Specialization">
+      <End Role="Specialization" EntitySet="Specializations" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Specialization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="ProjectManagerDBModel.FK_User_Specialization" FromRole="Specialization" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_User_Specialization">
+    <End Type="ProjectManagerDBModel.Specialization" Role="Specialization" Multiplicity="0..1" />
+    <End Type="ProjectManagerDBModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialization">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="SpecializationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
