@@ -15,61 +15,50 @@ using System.Windows.Shapes;
 namespace ProjectManagerApp.UI.Casements
 {
     /// <summary>
-    /// Логика взаимодействия для WindHome.xaml
+    /// Логика взаимодействия для WindMain.xaml
     /// </summary>
     public partial class WindHome : Window
     {
-        public WindHome()
+        public WindHome(Entities.User user)
         {
             InitializeComponent();
+
+            
+            lvCurrentProjects.ItemsSource = App.DataBase.Projects.Where(p=>p.IsCompleted == false).ToList();
+            lvOldProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == true).ToList();
         }
 
-        private void btnShowPwdClick(object sender, RoutedEventArgs e)
+        
+
+
+        private void btnCurrentProjectsClick(object sender, RoutedEventArgs e)
         {
-            if(tbxPassword.Visibility == Visibility.Visible)
-            {
-                tbxPassword.Visibility = Visibility.Collapsed;
-                pwdPassword.Visibility = Visibility.Visible;
-            }
+            if(lvCurrentProjects.Visibility == Visibility.Collapsed)
+                lvCurrentProjects.Visibility = Visibility.Visible;
             else
-            {
-                pwdPassword.Visibility = Visibility.Collapsed;
-                tbxPassword.Visibility = Visibility.Visible;
-            }
+                lvCurrentProjects.Visibility = Visibility.Collapsed;
         }
 
-        private void tbxPasswordKeyUp(object sender, KeyEventArgs e)
+        private void btnOldProjectsClick(object sender, RoutedEventArgs e)
         {
-            pwdPassword.Password = tbxPassword.Text;
-        }
-
-        private void pwdPasswordKeyUp(object sender, KeyEventArgs e)
-        {
-            tbxPassword.Text = pwdPassword.Password;
-        }
-
-        private void btnLogInClick(object sender, RoutedEventArgs e)
-        {
-            var users = App.DataBase.Users.ToList();
-            Entities.User currentUser = null;
-
-            if (string.IsNullOrWhiteSpace(tbxLogin.Text) || string.IsNullOrWhiteSpace(tbxPassword.Text))
-            {
-                MessageBox.Show($"Введите логин и пароль!");
-                return;
-            }
-
-            if (Classes.Authorization.LogIn(tbxLogin.Text, tbxPassword.Text, users, out currentUser))
-            {
-                MessageBox.Show($"Добро пожаловать, {currentUser.FirstName} {currentUser.Patronymic}!") ;
-                Window windMain = new WindMain(currentUser);
-                windMain.Show();
-                Close();
-            }
+            if (lvOldProjects.Visibility == Visibility.Collapsed)
+                lvOldProjects.Visibility = Visibility.Visible;
             else
-            {
-                MessageBox.Show($"Неправильно введен логин или пароль!");
-            }
+                lvOldProjects.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnExitClick(object sender, RoutedEventArgs e)
+        {
+            Window winAuth = new WindAuth();
+            winAuth.Show();
+            Close();
+        }
+
+
+        private void ListViewItemCLick(object sender, MouseButtonEventArgs e)
+        {
+
+            MainFrame.Navigate(new Pages.PageProject(((ListViewItem)sender).DataContext as Entities.Project));
         }
 
         private void btnCloseWind(object sender, RoutedEventArgs e)
@@ -79,20 +68,23 @@ namespace ProjectManagerApp.UI.Casements
 
         private void Drag(object sender, DragEventArgs e)
         {
-            if(Mouse.LeftButton == MouseButtonState.Pressed)
+            
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
+               
                 this.DragMove();
             }
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            WindowState = WindowState.Normal;
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
                 this.DragMove();
             }
         }
-        
+
         private void btnResizeClick(object sender, RoutedEventArgs e)
         {
             if (WindowState != WindowState.Maximized)

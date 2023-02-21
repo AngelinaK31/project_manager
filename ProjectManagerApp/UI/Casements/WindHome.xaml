@@ -5,53 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagerApp.UI.Casements"
         mc:Ignorable="d"
-        Title="ProjectManager" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
-    <Border BorderBrush="{StaticResource Blue}" BorderThickness="1">
-    <Grid Background="{StaticResource DarkBlue}">
-        
-        <Grid Background="{StaticResource Blue}" VerticalAlignment="Top" MouseDown="Grid_MouseDown">
-            <Image Source="/Resources/Logo.png" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
-            <TextBlock Text="ProjectManager" Style="{StaticResource WhiteBlock}" FontSize="14" VerticalAlignment="Center" Margin="40 0 0 0"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Button Background="Transparent" BorderThickness="0" Height="25" Click="btnHideClick">
-                    <Image Source="/Resources/hide_win.png" Height="25" Margin="0 3 0 0"/>
-                </Button>
-                <Button Background="Transparent" BorderThickness="0"  Click="btnResizeClick">
-                    <Image Source="/Resources/resize_win.png" Height="25"/>
-                </Button>
-                <Button Background="Transparent" BorderThickness="0" Click="btnCloseWind">
-                    <Image Source="/Resources/close_win.png" Height="25"/>
-                </Button>
-            </StackPanel>
-           
+        Title="ProjectManager" MinHeight="600" MinWidth="1000" WindowStartupLocation="CenterScreen"
+         Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+    </Window.Resources>
+    <Grid Background="{StaticResource LightBlue}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid  Background="{StaticResource DarkBlue}" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="78*"/>
+            </Grid.ColumnDefinitions>
+
         </Grid>
-            <Border   Margin="0 50 0 30" BorderBrush="{StaticResource Blue}" CornerRadius="8" BorderThickness="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <StackPanel HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"
-                        Background="{StaticResource Blue}">
 
-                <Image Source="/Resources/Logo.png" Height="150" 
-                       Margin="50 20 50 0"/>
-                <TextBlock Text="Вход" 
-                           HorizontalAlignment="Center" 
-                           Margin="0 20 0 0"
-                           FontSize="20" Style="{StaticResource WhiteBlock}"/>
-                <TextBlock Text="Логин: " Margin="20 0 20 0" Style="{StaticResource WhiteBlock}"/>
-                <TextBox x:Name="tbxLogin" Margin="20 10 20 10" Background="{StaticResource LightBlue}"/>
-                <TextBlock Text="Пароль: " Margin="20 0 20 0" Style="{StaticResource WhiteBlock}"/>
-                <Grid Margin="20 10 20 10" >
-
-                    <TextBox x:Name="tbxPassword"  Visibility="Collapsed" KeyUp="tbxPasswordKeyUp" Background="{StaticResource LightBlue}"/>
-                    
-                    <PasswordBox x:Name="pwdPassword" KeyUp="pwdPasswordKeyUp" Background="{StaticResource LightBlue}"/>
-                    
-                        <Button HorizontalAlignment="Right" Background="Transparent" Name="btnShowPwd" Click="btnShowPwdClick" BorderThickness="0">
-                        <Image Source="/Resources/eye.png" Width="25"/>
-                    </Button>
-                </Grid>
-               <Button x:Name="btnLogIn" Content="Войти" Background="{StaticResource Brown}" Width="150" Margin="0 5 0 10" Click="btnLogInClick"/>
-            </StackPanel>
-        </Border>
-    </Grid>
-    </Border>
+            <Grid Background="{StaticResource DarkBlue}" Grid.Row="1">
+                <StackPanel>
+                    <Button Content="Текущие проекты" Margin="10 15 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left"/>
+                    <ListView Background="Transparent" Name="lvCurrentProjects" Visibility="Collapsed" BorderThickness="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                    <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left"/>
+                    <ListView Background="Transparent" Name="lvOldProjects" Visibility="Collapsed" BorderThickness="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate >
+                                <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </StackPanel>
+                <Button VerticalAlignment="Bottom" Content="Выход" Background="{StaticResource Brown}" Margin="5" Width="200" Click="btnExitClick"/>
+            </Grid>
+            <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden" Focusable="False"/>
+        </Grid>
+    
 </Window>

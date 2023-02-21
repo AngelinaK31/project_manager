@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\VSProgs\ProjectManagerApp\ProjectManagerApp\obj\Debug\
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\
 ProjectManagerApp
 none
 false
 DEBUG;TRACE
-D:\VSProgs\ProjectManagerApp\ProjectManagerApp\App.xaml
-5-503755288
+D:\VSProgs\ProjectManager\ProjectManagerApp\App.xaml
+6-1731951316
 2-1109736879
-31994467447
-19346002724
-UI\Casements\WindHome.xaml;UI\Casements\WindMain.xaml;UI\Pages\PageProject.xaml;UI\UCs\DGTaskHeaderUC.xaml;UI\UCs\DGTaskItem.xaml;
+32-519854019
+19-875034224
+Styles\WindowStyle.xaml;UI\Casements\WindAuth.xaml;UI\Casements\WindHome.xaml;UI\Pages\PageProject.xaml;UI\UCs\DGTaskHeaderUC.xaml;UI\UCs\DGTaskItem.xaml;
 
-False
+True
 

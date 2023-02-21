@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ProjectManagerApp"
-             StartupUri="UI\Casements\WindHome.xaml">
+             StartupUri="UI\Casements\WindAuth.xaml">
     <Application.Resources>
+        
         <!--<SolidColorBrush x:Key ="Blue1" Color="#04859D"/>
         <SolidColorBrush x:Key ="LightBlue" Color="#37B6CE"/>
         <SolidColorBrush x:Key ="VeryLightBlue" Color="#5FBDCE"/>
@@ -18,6 +19,12 @@
         <SolidColorBrush x:Key ="Brown" Color="#a9794b"/>
         <SolidColorBrush x:Key ="LightBrown" Color="#d4bd87"/>
 
+        <ResourceDictionary x:Key="WindStyle">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/WindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
         <Style TargetType="TextBlock" x:Key="WhiteBlock">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Foreground" Value="{StaticResource LightBlue}"/>

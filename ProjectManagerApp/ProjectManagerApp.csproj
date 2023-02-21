@@ -127,15 +127,16 @@
     <Compile Include="Entities\User.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UI\Casements\WindHome.xaml.cs">
-      <DependentUpon>WindHome.xaml</DependentUpon>
+    <Compile Include="Styles\WindowStyle.cs" />
+    <Compile Include="UI\Casements\WindAuth.xaml.cs">
+      <DependentUpon>WindAuth.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Casements\WindMain.xaml.cs">
-      <DependentUpon>WindMain.xaml</DependentUpon>
+    <Compile Include="UI\Casements\WindHome.xaml.cs">
+      <DependentUpon>WindHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\PageProject.xaml.cs">
       <DependentUpon>PageProject.xaml</DependentUpon>
@@ -146,11 +147,15 @@
     <Compile Include="UI\UCs\DGTaskItem.xaml.cs">
       <DependentUpon>DGTaskItem.xaml</DependentUpon>
     </Compile>
-    <Page Include="UI\Casements\WindHome.xaml">
+    <Page Include="Styles\WindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Casements\WindMain.xaml">
+    <Page Include="UI\Casements\WindAuth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Casements\WindHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
