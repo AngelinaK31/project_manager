@@ -64,3 +64,5 @@ D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.C
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.CopyComplete
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\WindowStyle.baml
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\WindowStyle.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.baml

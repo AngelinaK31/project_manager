@@ -29,7 +29,7 @@
                                 </Grid.RowDefinitions>
                                 <Grid Background="{StaticResource Blue}" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True" MouseDown="gMouseDown">
                                     <Image Source="/Resources/Logo.png" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
-                                    <TextBlock Text="ProjectManager" Style="{StaticResource WhiteBlock}" FontSize="14" VerticalAlignment="Center" Margin="40 0 0 0"/>
+                                    <TextBlock Text="{Binding Title}" Style="{StaticResource WhiteBlock}" FontSize="14" VerticalAlignment="Center" Margin="40 0 0 0"/>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Button x:Name="btnHide" Background="Transparent" BorderThickness="0" Height="25" Click="btnHideClick">
                                             <Image Source="/Resources/hide_win.png" Height="25" Margin="0 3 0 0"/>

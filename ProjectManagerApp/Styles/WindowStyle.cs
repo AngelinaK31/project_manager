@@ -55,7 +55,7 @@ namespace ProjectManagerApp.Styles
                 {
                     ((sender as FrameworkElement).TemplatedParent as System.Windows.Window)
                 .WindowState = WindowState.Normal;
-
+                    
                 }
                     
 

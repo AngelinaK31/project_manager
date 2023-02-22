@@ -12,7 +12,7 @@
     </Window.Resources>
     <Grid Background="{StaticResource LightBlue}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -20,16 +20,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid  Background="{StaticResource DarkBlue}" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="47*"/>
-                <ColumnDefinition Width="78*"/>
-            </Grid.ColumnDefinitions>
 
         </Grid>
 
             <Grid Background="{StaticResource DarkBlue}" Grid.Row="1">
                 <StackPanel>
-                    <Button Content="Текущие проекты" Margin="10 15 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left"/>
+                    <Button Content="Текущие проекты" Margin="10 15 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
                     <ListView Background="Transparent" Name="lvCurrentProjects" Visibility="Collapsed" BorderThickness="0">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -42,7 +38,7 @@
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
-                    <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left"/>
+                <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
                     <ListView Background="Transparent" Name="lvOldProjects" Visibility="Collapsed" BorderThickness="0">
                         <ListView.ItemTemplate>
                             <DataTemplate >

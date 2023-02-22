@@ -128,6 +128,9 @@
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Styles\WindowStyle.cs" />
+    <Compile Include="UI\Casements\CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Casements\WindAuth.xaml.cs">
       <DependentUpon>WindAuth.xaml</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
       <DependentUpon>DGTaskItem.xaml</DependentUpon>
     </Compile>
     <Page Include="Styles\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Casements\CustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +232,7 @@
       <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
       <LastGenOutput>ProjectManagerDBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\spinning_circle.gif" />
     <Resource Include="Resources\resize_win.png" />
     <Resource Include="Resources\close_win.png" />
     <Resource Include="Resources\hide_win.png" />

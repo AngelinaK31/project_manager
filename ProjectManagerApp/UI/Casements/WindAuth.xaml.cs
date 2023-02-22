@@ -50,25 +50,39 @@ namespace ProjectManagerApp.UI.Casements
 
         private void btnLogInClick(object sender, RoutedEventArgs e)
         {
+            tbxLogin.IsEnabled = false;
+            tbxPassword.IsEnabled = false;
+            pwdPassword.IsEnabled = false;
+            btnLogIn.IsEnabled = false;
+
             var users = App.DataBase.Users.ToList();
             Entities.User currentUser = null;
+            
 
             if (string.IsNullOrWhiteSpace(tbxLogin.Text) || string.IsNullOrWhiteSpace(tbxPassword.Text))
             {
-                MessageBox.Show($"Введите логин и пароль!");
+                CustomMessageBox.Show("Ошибка",$"Введите логин и пароль!");
+                tbxLogin.IsEnabled = true;
+                tbxPassword.IsEnabled = true;
+                pwdPassword.IsEnabled = true;
+                btnLogIn.IsEnabled = true;
                 return;
             }
 
             if (Classes.Authorization.LogIn(tbxLogin.Text, tbxPassword.Text, users, out currentUser))
             {
-                MessageBox.Show($"Добро пожаловать, {currentUser.FirstName} {currentUser.Patronymic}!") ;
+                CustomMessageBox.Show("", $"Добро пожаловать, {currentUser.FirstName} {currentUser.Patronymic}!") ;
                 Window windHome = new WindHome(currentUser);
                 windHome.Show();
                 Close();
             }
             else
             {
-                MessageBox.Show($"Неправильно введен логин или пароль!");
+                CustomMessageBox.Show("Ошибка", $"Неправильно введен логин или пароль!");
+                tbxLogin.IsEnabled = true;
+                tbxPassword.IsEnabled = true;
+                pwdPassword.IsEnabled = true;
+                btnLogIn.IsEnabled = true;
             }
         }
 

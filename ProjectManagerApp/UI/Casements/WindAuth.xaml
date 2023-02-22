@@ -5,26 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagerApp.UI.Casements"
         mc:Ignorable="d"
-        Title="ProjectManager" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
-    <Border BorderBrush="{StaticResource Blue}" BorderThickness="1">
+        Title="ProjectManager" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+    </Window.Resources>
+
     <Grid Background="{StaticResource DarkBlue}">
         
-        <Grid Background="{StaticResource Blue}" VerticalAlignment="Top" MouseDown="Grid_MouseDown">
-            <Image Source="/Resources/Logo.png" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
-            <TextBlock Text="ProjectManager" Style="{StaticResource WhiteBlock}" FontSize="14" VerticalAlignment="Center" Margin="40 0 0 0"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Button Background="Transparent" BorderThickness="0" Height="25" Click="btnHideClick">
-                    <Image Source="/Resources/hide_win.png" Height="25" Margin="0 3 0 0"/>
-                </Button>
-                <Button Background="Transparent" BorderThickness="0"  Click="btnResizeClick">
-                    <Image Source="/Resources/resize_win.png" Height="25"/>
-                </Button>
-                <Button Background="Transparent" BorderThickness="0" Click="btnCloseWind">
-                    <Image Source="/Resources/close_win.png" Height="25"/>
-                </Button>
-            </StackPanel>
-           
-        </Grid>
             <Border   Margin="0 50 0 30" BorderBrush="{StaticResource Blue}" CornerRadius="8" BorderThickness="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <StackPanel HorizontalAlignment="Center" 
                         VerticalAlignment="Center"
@@ -50,8 +38,10 @@
                     </Button>
                 </Grid>
                <Button x:Name="btnLogIn" Content="Войти" Background="{StaticResource Brown}" Width="150" Margin="0 5 0 10" Click="btnLogInClick"/>
+
+                
             </StackPanel>
         </Border>
     </Grid>
-    </Border>
+    
 </Window>
