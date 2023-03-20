@@ -27,6 +27,8 @@
         <AssociationConnector Association="ProjectManagerDBModel.TeamMember" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ProjectManagerDBModel.Specialization" Width="1.5" PointX="7.375" PointY="4.875" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_User_Specialization" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.Status" Width="1.5" PointX="7.375" PointY="7.875" />
+        <AssociationConnector Association="ProjectManagerDBModel.FK_Task_Status" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,9 +1,10 @@
 ﻿
 FD:\VSProgs\ProjectManager\ProjectManagerApp\App.xaml;;
+FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Casements\CustomMessageBox.xaml;;
 FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Casements\WindAuth.xaml;;
 FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Casements\WindHome.xaml;;
 FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Pages\PageProject.xaml;;
 FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\UCs\DGTaskHeaderUC.xaml;;
 FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\UCs\DGTaskItem.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Casements\CustomMessageBox.xaml;;
+FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\UCs\UCListTasks.xaml;;
 

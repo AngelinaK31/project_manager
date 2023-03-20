@@ -4,17 +4,46 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjectManagerApp.UI.Pages"
+      xmlns:local1="clr-namespace:ProjectManagerApp.UI.UCs"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="PageProject">
 
     <Grid Background="{StaticResource LightBlue}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="300"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1"   Name="gInfo">
-            <Grid Background="{StaticResource DarkBlue}" Opacity="0.8"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <TextBlock Text="{Binding Name}" VerticalAlignment="Top" Margin="5" HorizontalAlignment="Left"/>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource btnTranparent}" Click="btnShowInfoClick">
+                <Image Source="/Resources/vertical_menu.png" Height="30"/>
+            </Button>
+        </Grid>
+        
+        
+
+       
+        <ListView Grid.Row="1" Name="spTasks" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local1:UCListTasks/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+        <Grid   Name="gInfo" Width="300" Background="{StaticResource Blue}" HorizontalAlignment="Right" Grid.RowSpan="2" Visibility="Collapsed">
+            <Button VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource btnTranparent}" Click="btnHideInfoClick">
+                <Image Source="/Resources/arrow_frw.png" Height="30"/>
+            </Button>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5">
 
@@ -36,12 +65,15 @@
                     <DatePicker SelectedDate="{Binding Deadline}" IsEnabled="False" Name="tpDeadline"/>
                 </StackPanel>
             </StackPanel>
-            <Button Content="Отредактировать" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="btnEditInfoClick" Name="btnEditInfo"/>
-            <Button Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="btnSaveClik" Name="btnSave" Visibility="Collapsed"/>
 
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" >
+                <Button Content="Рассчитать трудозатраты" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
+
+                <Button Content="Отредактировать"  Click="btnEditInfoClick" Name="btnEditInfo" Margin="0 0 0 5"/>
+                <Button Content="Сохранить изменения"  Click="btnSaveClik" Name="btnSave" Visibility="Collapsed" Margin="0 0 0 5"/>
+            </StackPanel>
         </Grid>
-        <DataGrid x:Name="dgTasks" AutoGenerateColumns="False" Background="{StaticResource LightBlue}" HorizontalScrollBarVisibility="auto" Height="auto">
-            
-        </DataGrid>
+
     </Grid>
 </Page>

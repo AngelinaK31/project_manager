@@ -62,6 +62,7 @@
     <EntitySetMapping Name="Tasks">
       <EntityTypeMapping TypeName="ProjectManagerDBModel.Task">
         <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ExecutorId" ColumnName="ExecutorId" />
@@ -117,6 +118,14 @@
     <EntitySetMapping Name="Specializations">
       <EntityTypeMapping TypeName="ProjectManagerDBModel.Specialization">
         <MappingFragment StoreEntitySet="Specialization">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="ProjectManagerDBModel.Status">
+        <MappingFragment StoreEntitySet="Status">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

@@ -36,5 +36,6 @@ namespace ProjectManagerApp.Entities
         public virtual DbSet<TypeOfWork> TypeOfWorks { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Specialization> Specializations { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
     }
 }

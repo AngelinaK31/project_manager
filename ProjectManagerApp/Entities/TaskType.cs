@@ -8,8 +8,9 @@ namespace ProjectManagerApp.Entities
 {
     public enum TaskType
     {
-        InProgress,
-        Completed,
-        NotExists
+        ToDo,
+        InWork,
+        OnTest,
+        Done
     }
 }

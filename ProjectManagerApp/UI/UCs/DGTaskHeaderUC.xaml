@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectManagerApp.UI.UCs"
              mc:Ignorable="d">
-    <StackPanel MinWidth="50">
-        <TextBlock Text="{Binding Specialization.Name}"/>
-        <TextBlock Text="{Binding FullName}" FontSize="16"/>
+    <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="0 0 10 0"/>
+        <TextBlock Text="{Binding SumTasks}" FontSize="16" VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>

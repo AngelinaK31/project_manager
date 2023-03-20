@@ -55,6 +55,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -79,6 +86,7 @@
           <Property Name="TypeOFWorkId" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" />
         </EntityType>
         <EntityType Name="TeamMember">
           <Key>
@@ -176,6 +184,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Task_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Task_TypeOfWork">
           <End Role="TypeOfWork" Type="Self.TypeOfWork" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
@@ -267,6 +287,7 @@
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectTeam" EntityType="Self.ProjectTeam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Specialization" EntityType="Self.Specialization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeamMember" EntityType="Self.TeamMember" Schema="dbo" store:Type="Tables" />
@@ -291,6 +312,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Task_Project" Association="Self.FK_Task_Project">
             <End Role="Project" EntitySet="Project" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Status" Association="Self.FK_Task_Status">
+            <End Role="Status" EntitySet="Status" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_Task_TypeOfWork" Association="Self.FK_Task_TypeOfWork">
@@ -406,6 +431,8 @@
           <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Task" ToRole="Project" />
           <NavigationProperty Name="TypeOfWork" Relationship="Self.FK_Task_TypeOfWork" FromRole="Task" ToRole="TypeOfWork" />
           <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
+          <Property Name="StatusId" Type="Int32" />
+          <NavigationProperty Name="Status" Relationship="ProjectManagerDBModel.FK_Task_Status" FromRole="Task" ToRole="Status" />
         </EntityType>
         <EntityType Name="TypeOfUser">
           <Key>
@@ -611,6 +638,11 @@
             <End Role="Specialization" EntitySet="Specializations" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Status" EntityType="ProjectManagerDBModel.Status" />
+          <AssociationSet Name="FK_Task_Status" Association="ProjectManagerDBModel.FK_Task_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Specialization">
           <Key>
@@ -629,6 +661,26 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="SpecializationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tasks" Relationship="ProjectManagerDBModel.FK_Task_Status" FromRole="Status" ToRole="Task" />
+        </EntityType>
+        <Association Name="FK_Task_Status">
+          <End Type="ProjectManagerDBModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="ProjectManagerDBModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="StatusId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -699,6 +751,7 @@
           <EntitySetMapping Name="Tasks">
             <EntityTypeMapping TypeName="ProjectManagerDBModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ExecutorId" ColumnName="ExecutorId" />
@@ -754,6 +807,14 @@
           <EntitySetMapping Name="Specializations">
             <EntityTypeMapping TypeName="ProjectManagerDBModel.Specialization">
               <MappingFragment StoreEntitySet="Specialization">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ProjectManagerDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

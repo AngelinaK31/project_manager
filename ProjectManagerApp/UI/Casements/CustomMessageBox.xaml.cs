@@ -22,13 +22,17 @@ namespace ProjectManagerApp.UI.Casements
         public CustomMessageBox()
         {
             InitializeComponent();
+            
+           
         }
 
         public CustomMessageBox(string title, string description)
         {
             InitializeComponent();
 
-            this.Title = title;
+            btnOK.Focus();
+
+            Title = title;
             tbxDesciption.Text = description;
         }
 
@@ -38,7 +42,12 @@ namespace ProjectManagerApp.UI.Casements
 
             wind.ShowDialog();
 
+           
+        }
 
+        private void btnOKClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 

@@ -4,14 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectManagerApp.UI.UCs"
-             mc:Ignorable="d" Width="200" DataContextChanged="UserControlDataContextChanged">
-    <Grid Name="spUC">
-        <CheckBox x:Name="rbTask" VerticalContentAlignment="Center">
+             mc:Ignorable="d">
+    <StackPanel>
+        <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
 
-            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
-        </CheckBox>
-        <Button Background="Transparent" BorderThickness="0" HorizontalAlignment="Right">
-            <Image Source="/Resources/settings.png" Height="30"/>
-        </Button>
-    </Grid>
+        <TextBlock Text="{Binding User.SecondName}" HorizontalAlignment="Right"/>
+
+    </StackPanel>
 </UserControl>

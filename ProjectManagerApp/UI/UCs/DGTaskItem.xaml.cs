@@ -26,14 +26,5 @@ namespace ProjectManagerApp.UI.UCs
            
         }
 
-        private void UserControlDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-                if(e.NewValue == null)
-                {
-                    spUC.Visibility = Visibility.Hidden; 
-                    
-                }
-            
-        }
     }
 }

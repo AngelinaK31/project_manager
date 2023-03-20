@@ -15,15 +15,12 @@
 
         <SolidColorBrush x:Key ="DarkBlue" Color="#1c2135"/>
         <SolidColorBrush x:Key ="Blue" Color="#5a6794"/>
+        <SolidColorBrush x:Key ="BlueOp" Color="#5a6794" Opacity="0.6"/>
         <SolidColorBrush x:Key ="LightBlue" Color="#e9ebef"/>
         <SolidColorBrush x:Key ="Brown" Color="#a9794b"/>
-        <SolidColorBrush x:Key ="LightBrown" Color="#d4bd87"/>
+        <SolidColorBrush x:Key ="LightBrown" Color="#d4bd87" />
 
-        <ResourceDictionary x:Key="WindStyle">
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/WindowStyle.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <ResourceDictionary x:Key="WindStyle" Source="pack://application:,,,/Styles/Window/WindowStyle.xaml"/>
         
         <Style TargetType="TextBlock" x:Key="WhiteBlock">
             <Setter Property="FontSize" Value="18"/>
@@ -38,41 +35,121 @@
         </Style>
 
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Background" Value="{StaticResource Blue}"/>
+            <Style.Setters>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Background" Value="{StaticResource Blue}"/>
+            </Style.Setters>
+            
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </Style.Resources>
-            
+           
         </Style>
 
         <Style TargetType="TextBox" x:Key="EditBox">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Opacity" Value="0.8"/>
-            <Setter Property="Background" Value="{StaticResource Blue}"/>
+            <Setter Property="Background" Value="{StaticResource LightBlue}"/>
         </Style>
         
         <Style TargetType="PasswordBox">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Background" Value="{StaticResource Blue}"/>
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="3"/>
-                </Style>
-            </Style.Resources>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}" 
+        x:Name="Bd" BorderBrush="#FFABADB3"
+        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <ScrollViewer Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="Width" Value="Auto">
+                                <Setter Property="MinWidth" Value="100"/>
+                            </Trigger>
+                            <Trigger Property="Height" Value="Auto">
+                                <Setter Property="MinHeight" Value="20"/>
+                            </Trigger>
+                            
+                        </ControlTemplate.Triggers>
+
+
+                    </ControlTemplate>
+                   
+                </Setter.Value>
+            </Setter>
+            
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Foreground" Value="{StaticResource LightBlue}"/>
-            <Setter Property="Background" Value="{StaticResource Brown}"/>
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="3"/>
-                </Style>
-            </Style.Resources>
+            <Style.Setters>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Foreground" Value="{StaticResource LightBlue}"/>
+                <Setter Property="Background" Value="{StaticResource Brown}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="3"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="{TemplateBinding Background}"
+                                    Height="{TemplateBinding Height}"
+                                    Width="{TemplateBinding Width}">
+                                <ContentControl Margin="{TemplateBinding Margin}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                                Content="{TemplateBinding Content}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource LightBrown}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource Brown}"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="Button" x:Key="btnTranparent">
+            <Style.Setters>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="3"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="{TemplateBinding Background}"
+                                    Height="{TemplateBinding Height}"
+                                    Width="{TemplateBinding Width}">
+                                <ContentControl Margin="{TemplateBinding Margin}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                                Content="{TemplateBinding Content}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.6"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+
         </Style>
 
         <Style TargetType="Window">
@@ -80,6 +157,19 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Window">
                         <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <BulletDecorator>
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" RecognizesAccessKey="True"/>
+                        </BulletDecorator>
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

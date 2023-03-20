@@ -80,6 +80,8 @@
     <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Task" ToRole="Project" />
     <NavigationProperty Name="TypeOfWork" Relationship="Self.FK_Task_TypeOfWork" FromRole="Task" ToRole="TypeOfWork" />
     <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
+    <Property Name="StatusId" Type="Int32" />
+    <NavigationProperty Name="Status" Relationship="ProjectManagerDBModel.FK_Task_Status" FromRole="Task" ToRole="Status" />
   </EntityType>
   <EntityType Name="TypeOfUser">
     <Key>
@@ -285,6 +287,11 @@
       <End Role="Specialization" EntitySet="Specializations" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="Status" EntityType="ProjectManagerDBModel.Status" />
+    <AssociationSet Name="FK_Task_Status" Association="ProjectManagerDBModel.FK_Task_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Specialization">
     <Key>
@@ -303,6 +310,26 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="SpecializationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tasks" Relationship="ProjectManagerDBModel.FK_Task_Status" FromRole="Status" ToRole="Task" />
+  </EntityType>
+  <Association Name="FK_Task_Status">
+    <End Type="ProjectManagerDBModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="ProjectManagerDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="StatusId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

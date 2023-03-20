@@ -19,6 +19,7 @@ namespace ProjectManagerApp.UI.Casements
     /// </summary>
     public partial class WindAuth : Window
     {
+        List<Entities.User> users = App.DataBase.Users.ToList();
         public WindAuth()
         {
             InitializeComponent();
@@ -55,13 +56,14 @@ namespace ProjectManagerApp.UI.Casements
             pwdPassword.IsEnabled = false;
             btnLogIn.IsEnabled = false;
 
-            var users = App.DataBase.Users.ToList();
+            
             Entities.User currentUser = null;
             
 
             if (string.IsNullOrWhiteSpace(tbxLogin.Text) || string.IsNullOrWhiteSpace(tbxPassword.Text))
             {
                 CustomMessageBox.Show("Ошибка",$"Введите логин и пароль!");
+                
                 tbxLogin.IsEnabled = true;
                 tbxPassword.IsEnabled = true;
                 pwdPassword.IsEnabled = true;
@@ -71,6 +73,7 @@ namespace ProjectManagerApp.UI.Casements
 
             if (Classes.Authorization.LogIn(tbxLogin.Text, tbxPassword.Text, users, out currentUser))
             {
+                
                 CustomMessageBox.Show("", $"Добро пожаловать, {currentUser.FirstName} {currentUser.Patronymic}!") ;
                 Window windHome = new WindHome(currentUser);
                 windHome.Show();
@@ -78,6 +81,7 @@ namespace ProjectManagerApp.UI.Casements
             }
             else
             {
+                
                 CustomMessageBox.Show("Ошибка", $"Неправильно введен логин или пароль!");
                 tbxLogin.IsEnabled = true;
                 tbxPassword.IsEnabled = true;
@@ -118,6 +122,15 @@ namespace ProjectManagerApp.UI.Casements
         private void btnHideClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void PasswordKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnLogInClick(sender, e);
+                
+            }
         }
     }
 }

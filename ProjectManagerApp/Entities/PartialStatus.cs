@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectManagerApp.Entities
 {
-    public class TaskHeaders
+    public partial class Status
     {
-        string Specialization { get; set; }
-        string FullName { get;set; }
+        public int SumTasks { get; set; }
+        
     }
 }

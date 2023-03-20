@@ -5,56 +5,105 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagerApp.UI.Casements"
         mc:Ignorable="d"
-        Title="ProjectManager" MinHeight="600" MinWidth="1000" WindowStartupLocation="CenterScreen"
+        Title="Менеджер проектов" MinHeight="600" MinWidth="1000" WindowStartupLocation="CenterScreen"
          Style="{DynamicResource WindowStyle}">
     <Window.Resources>
-        <ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Window/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Window.Resources>
+   
     <Grid Background="{StaticResource LightBlue}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid  Background="{StaticResource DarkBlue}" Grid.ColumnSpan="2">
+        <Grid  Background="{StaticResource Blue}" Grid.ColumnSpan="2">
 
         </Grid>
 
-            <Grid Background="{StaticResource DarkBlue}" Grid.Row="1">
-                <StackPanel>
-                    <Button Content="Текущие проекты" Margin="10 15 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
-                    <ListView Background="Transparent" Name="lvCurrentProjects" Visibility="Collapsed" BorderThickness="0">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-                <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
-                    <ListView Background="Transparent" Name="lvOldProjects" Visibility="Collapsed" BorderThickness="0">
-                        <ListView.ItemTemplate>
-                            <DataTemplate >
-                                <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
+        <Grid Background="{StaticResource BlueOp}" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="51"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <StackPanel Margin="0 10 0 0 ">
+                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                        <StackPanel>
+                            <Image Source="/Resources/home.png" Width="30"/>
+                            <TextBlock Text="Главная" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                        <StackPanel>
+                            <Image Source="/Resources/project.png" Width="30"/>
+                            <TextBlock Text="Проекты" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                        <StackPanel>
+                            <Image Source="/Resources/team.png" Width="30"/>
+                            <TextBlock Text="Команда" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                        <StackPanel>
+                            <Image Source="/Resources/diagram.png" Width="30"/>
+                            <TextBlock Text="Отчеты" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </RadioButton>
+                    
                 </StackPanel>
-                <Button VerticalAlignment="Bottom" Content="Выход" Background="{StaticResource Brown}" Margin="5" Width="200" Click="btnExitClick"/>
+
+                <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 5">
+                    <Button Background="Transparent" BorderBrush="Transparent">
+                        <Image Source="/Resources/settings.png" Width="30"/>
+                        
+                    </Button>
+                    <Button Background="Transparent" BorderBrush="Transparent" Click="btnExitClick">
+                        <Image Source="/Resources/exit.png" Width="30"/>
+                    </Button>
+                </StackPanel>
             </Grid>
-            <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden" Focusable="False"/>
+            <StackPanel Grid.Column="1">
+                <Button Content="Текущие проекты" Margin="10 15 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
+                <ListView Background="Transparent" Name="lvCurrentProjects" Visibility="Collapsed" BorderThickness="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
+                <ListView Background="Transparent" Name="lvOldProjects" Visibility="Collapsed" BorderThickness="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </StackPanel>
         </Grid>
-    
+        <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden" Focusable="False"/>
+    </Grid>
+
 </Window>

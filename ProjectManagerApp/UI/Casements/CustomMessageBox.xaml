@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagerApp.UI.Casements"
         mc:Ignorable="d"
-        Title="CustomMessageBox" Height="200" Width="400"
-        Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen">
+        Title="{Binding Title}" Height="200" Width="400"
+        Style="{DynamicResource MessageBoxStyle}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
-        <ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+        <ResourceDictionary Source="/Styles/MessageBox/MessageBoxStyle.xaml"/>
     </Window.Resources>
     <Grid Background="{StaticResource LightBlue}">
-        <TextBlock VerticalAlignment="Center" x:Name="tbxDesciption" HorizontalAlignment="Center" FontSize="16"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center" x:Name="tbxDesciption" HorizontalAlignment="Center" FontSize="16" />
+        <Button Content="ОК" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Width="150" Name="btnOK" Click="btnOKClick"/>
     </Grid>
 </Window>

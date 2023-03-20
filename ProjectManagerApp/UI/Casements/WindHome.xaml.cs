@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagerApp.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,7 @@ namespace ProjectManagerApp.UI.Casements
         {
 
             MainFrame.Navigate(new Pages.PageProject(((ListViewItem)sender).DataContext as Entities.Project));
+            Manager._frame = MainFrame;
         }
 
         private void btnCloseWind(object sender, RoutedEventArgs e)

@@ -48,6 +48,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -74,12 +77,16 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Authorization.cs" />
     <Compile Include="Classes\DataGridTaskGenerator.cs" />
+    <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\ProjectLib.cs" />
+    <Compile Include="Entities\PartialStatus.cs" />
+    <Compile Include="Entities\Status.cs">
+      <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\TaskType.cs" />
     <Compile Include="Entities\CostOfWork.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\ExecutorTask.cs" />
     <Compile Include="Entities\Gender.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -117,7 +124,6 @@
     <Compile Include="Entities\Task.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\TaskHeaders.cs" />
     <Compile Include="Entities\TypeOfUser.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -127,7 +133,8 @@
     <Compile Include="Entities\User.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Styles\WindowStyle.cs" />
+    <Compile Include="Styles\MessageBox\MessageBoxStyle.cs" />
+    <Compile Include="Styles\Window\WindowStyle.cs" />
     <Compile Include="UI\Casements\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
@@ -150,7 +157,14 @@
     <Compile Include="UI\UCs\DGTaskItem.xaml.cs">
       <DependentUpon>DGTaskItem.xaml</DependentUpon>
     </Compile>
-    <Page Include="Styles\WindowStyle.xaml">
+    <Compile Include="UI\UCs\UCListTasks.xaml.cs">
+      <DependentUpon>UCListTasks.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Styles\MessageBox\MessageBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Window\WindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\UCs\DGTaskItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UCs\UCListTasks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,6 +250,15 @@
       <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
       <LastGenOutput>ProjectManagerDBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\arrow_frw.png" />
+    <Resource Include="Resources\vertical_menu.png" />
+    <Resource Include="Resources\info.png" />
+    <Resource Include="Resources\home.png" />
+    <Resource Include="Resources\settings.png" />
+    <Resource Include="Resources\exit.png" />
+    <Resource Include="Resources\diagram.png" />
+    <Resource Include="Resources\team.png" />
+    <Resource Include="Resources\project.png" />
     <Resource Include="Resources\spinning_circle.gif" />
     <Resource Include="Resources\resize_win.png" />
     <Resource Include="Resources\close_win.png" />
@@ -239,7 +266,6 @@
     <Resource Include="Resources\eye.png" />
     <Resource Include="Resources\eye_w.png" />
     <Resource Include="Resources\eye_b.png" />
-    <Resource Include="Resources\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

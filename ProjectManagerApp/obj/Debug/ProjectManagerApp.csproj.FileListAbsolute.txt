@@ -62,7 +62,15 @@ D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\ProjectManagerApp.Properti
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.GenerateResource.cache
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.CoreCompileInputs.cache
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.CopyComplete
-D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\WindowStyle.baml
-D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\WindowStyle.g.cs
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.g.cs
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\Window\WindowStyle.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\Window\WindowStyle.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\MessageBox\MessageBoxStyle.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\Styles\MessageBox\MessageBoxStyle.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\bin\Debug\FontAwesome.WPF.dll
+D:\VSProgs\ProjectManager\ProjectManagerApp\bin\Debug\FontAwesome.WPF.xml
+D:\VSProgs\ProjectManager\ProjectManagerApp\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.baml

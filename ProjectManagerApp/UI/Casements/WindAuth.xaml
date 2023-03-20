@@ -4,16 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagerApp.UI.Casements"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="ProjectManager" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Title="Менеджер проектов" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Style="{DynamicResource WindowStyle}">
     <Window.Resources>
-        <ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+        <ResourceDictionary Source="/Styles/Window/WindowStyle.xaml"/>
     </Window.Resources>
 
     <Grid Background="{StaticResource DarkBlue}">
-        
-            <Border   Margin="0 50 0 30" BorderBrush="{StaticResource Blue}" CornerRadius="8" BorderThickness="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+
+        <Border   Margin="0 50 0 30" BorderBrush="{StaticResource Blue}" CornerRadius="8" BorderThickness="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <StackPanel HorizontalAlignment="Center" 
                         VerticalAlignment="Center"
                         Background="{StaticResource Blue}">
@@ -29,18 +30,22 @@
                 <TextBlock Text="Пароль: " Margin="20 0 20 0" Style="{StaticResource WhiteBlock}"/>
                 <Grid Margin="20 10 20 10" >
 
-                    <TextBox x:Name="tbxPassword"  Visibility="Collapsed" KeyUp="tbxPasswordKeyUp" Background="{StaticResource LightBlue}"/>
-                    
-                    <PasswordBox x:Name="pwdPassword" KeyUp="pwdPasswordKeyUp" Background="{StaticResource LightBlue}"/>
-                    
-                        <Button HorizontalAlignment="Right" Background="Transparent" Name="btnShowPwd" Click="btnShowPwdClick" BorderThickness="0">
-                        <Image Source="/Resources/eye.png" Width="25"/>
+                    <TextBox x:Name="tbxPassword"  Visibility="Collapsed" KeyUp="tbxPasswordKeyUp" Background="{StaticResource LightBlue}" KeyDown="PasswordKeyDown"/>
+
+                    <PasswordBox x:Name="pwdPassword" KeyUp="pwdPasswordKeyUp" Background="{StaticResource LightBlue}" KeyDown="PasswordKeyDown"/>
+
+                    <Button HorizontalAlignment="Right"  Name="btnShowPwd" Click="btnShowPwdClick" Style="{StaticResource btnTranparent}">
+
+                        <Image Source="/Resources/eye.png" Width="24" Margin="3 0 3 0"/>
                     </Button>
                 </Grid>
-               <Button x:Name="btnLogIn" Content="Войти" Background="{StaticResource Brown}" Width="150" Margin="0 5 0 10" Click="btnLogInClick"/>
+                <Button x:Name="btnLogIn"   Width="150" Margin="0 0 0 8" Click="btnLogInClick" Content="Войти" HorizontalAlignment="Center" Height="30"/>
 
-                
+
+
+
             </StackPanel>
+
         </Border>
     </Grid>
     
