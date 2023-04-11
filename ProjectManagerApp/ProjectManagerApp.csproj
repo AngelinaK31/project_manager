@@ -77,6 +77,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Authorization.cs" />
     <Compile Include="Classes\DataGridTaskGenerator.cs" />
+    <Compile Include="Classes\LaborCost.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\ProjectLib.cs" />
     <Compile Include="Entities\PartialStatus.cs" />
@@ -151,6 +152,9 @@
     <Compile Include="UI\Pages\PageProject.xaml.cs">
       <DependentUpon>PageProject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\PageTask.xaml.cs">
+      <DependentUpon>PageTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\UCs\DGTaskHeaderUC.xaml.cs">
       <DependentUpon>DGTaskHeaderUC.xaml</DependentUpon>
     </Compile>
@@ -181,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Pages\PageProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\PageTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,6 +258,7 @@
       <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
       <LastGenOutput>ProjectManagerDBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\arrow_frw.png" />
     <Resource Include="Resources\vertical_menu.png" />
     <Resource Include="Resources\info.png" />

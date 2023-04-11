@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectManagerApp.Classes;
+using ProjectManagerApp.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,8 +25,24 @@ namespace ProjectManagerApp.UI.UCs
         public DGTaskItem()
         {
             InitializeComponent();
+            
            
         }
 
+        private void btnDelTaskClick(object sender, RoutedEventArgs e)
+        {
+            var taskToDelete = (sender as Button).DataContext as Entities.Task;
+            var project = taskToDelete.Project;
+            try
+            {
+                App.DataBase.Tasks.Remove(taskToDelete);
+                App.DataBase.SaveChanges();
+                Manager._frame.Navigate(new Pages.PageProject(project));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
     }
 }

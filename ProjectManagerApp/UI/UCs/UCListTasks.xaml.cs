@@ -22,30 +22,18 @@ namespace ProjectManagerApp.UI.UCs
     /// </summary>
     public partial class UCListTasks : UserControl
     {
-
-
-        public ICommand ItemDropCommand
-        {
-            get { return (ICommand)GetValue(ItemDropCommandProperty); }
-            set { SetValue(ItemDropCommandProperty, value); }
-        }
-
-       
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ItemDropCommandProperty =
-            DependencyProperty.RegisterAttached("ItemDropCommand", typeof(ICommand), typeof(UCListTasks), new PropertyMetadata(null));
-
-
         public UCListTasks()
         {
             InitializeComponent();
+            
         }
 
         private void lvPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Entities.Task task = (Entities.Task)(sender as ListViewItem).DataContext;
-            MessageBox.Show(task.Name);
+            
+
+            Manager._frame.Navigate(new Pages.PageTask((Entities.Task)(sender as ListViewItem).DataContext, null));
+
         }
 
         private void ListViewItem_MouseMove(object sender, MouseEventArgs e)
@@ -69,6 +57,12 @@ namespace ProjectManagerApp.UI.UCs
             App.DataBase.SaveChanges();
 
             Manager._frame.Navigate(new Pages.PageProject(task.Project));
+        }
+
+        private void btnAddTaskClick(object sender, RoutedEventArgs e)
+        {
+            
+            Manager._frame.Navigate(new Pages.PageTask(null, this.DataContext as Entities.Status));
         }
 
         

@@ -13,7 +13,7 @@ namespace ProjectManagerApp.Entities
         {
             get
             {
-                var fullName = $"{FirstName}\n{SecondName}";
+                var fullName = $"{SecondName}\n{FirstName}";
                 if (Patronymic != null)
                     fullName += $" \n{Patronymic}";
                 return fullName;

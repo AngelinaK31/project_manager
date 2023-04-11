@@ -103,7 +103,8 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden" Focusable="False"/>
+        <Button Name="btnBack" Click="btnBackClick" Content="Назад" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Margin="5" Visibility="Collapsed"/>
+        <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden" Focusable="False" ContentRendered="MainFrameContentRendered"/>
     </Grid>
 
 </Window>

@@ -99,5 +99,20 @@ namespace ProjectManagerApp.UI.Casements
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void btnBackClick(object sender, RoutedEventArgs e)
+        {
+            MainFrame.GoBack();
+        }
+
+        private void MainFrameContentRendered(object sender, EventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                btnBack.Visibility = Visibility.Visible;
+            }
+            else
+                btnBack.Visibility = Visibility.Collapsed;
+        }
     }
 }

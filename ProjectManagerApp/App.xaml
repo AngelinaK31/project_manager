@@ -30,8 +30,9 @@
         </Style>
         <Style TargetType="TextBlock" x:Key="BlackBlock">
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Foreground" Value="{StaticResource LightBlue}"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkBlue}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
         </Style>
 
         <Style TargetType="TextBox">
@@ -102,9 +103,9 @@
                                     Background="{TemplateBinding Background}"
                                     Height="{TemplateBinding Height}"
                                     Width="{TemplateBinding Width}">
-                                <ContentControl Margin="{TemplateBinding Margin}"
-                                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                <ContentControl Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                 Content="{TemplateBinding Content}"/>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -173,6 +174,18 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="5 7"/>
+            <Setter Property="MinWidth" Value="150"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
         
     </Application.Resources>

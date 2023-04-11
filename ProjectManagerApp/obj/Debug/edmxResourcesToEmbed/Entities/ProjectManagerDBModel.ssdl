@@ -33,7 +33,7 @@
     <Property Name="CreationDate" Type="date" Nullable="false" />
     <Property Name="CompletionDate" Type="date" />
     <Property Name="Deadline" Type="date" Nullable="false" />
-    <Property Name="LaborCost(h)" Type="int" />
+    <Property Name="LaborCost(h)" Type="float" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="IsCompleted" Type="bit" />
   </EntityType>

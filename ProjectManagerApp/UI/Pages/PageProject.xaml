@@ -17,20 +17,33 @@
 
         <Grid>
             <TextBlock Text="{Binding Name}" VerticalAlignment="Top" Margin="5" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="tblLaborCost" HorizontalAlignment="Right" Margin="0 0 50 0"/>
             <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource btnTranparent}" Click="btnShowInfoClick">
                 <Image Source="/Resources/vertical_menu.png" Height="30"/>
             </Button>
         </Grid>
-        
-        
 
-       
+
+
+
         <ListView Grid.Row="1" Name="spTasks" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <local1:UCListTasks/>
@@ -74,6 +87,8 @@
                 <Button Content="Сохранить изменения"  Click="btnSaveClik" Name="btnSave" Visibility="Collapsed" Margin="0 0 0 5"/>
             </StackPanel>
         </Grid>
+
+       
 
     </Grid>
 </Page>

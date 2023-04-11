@@ -1,6 +1,7 @@
 ﻿using ProjectManagerApp.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace ProjectManagerApp.UI.Pages
     /// </summary>
     public partial class PageProject : Page
     {
-        private Entities.Project _project;
+        public static Entities.Project _project;
         public PageProject(Entities.Project project)
         {
             InitializeComponent();
@@ -39,18 +40,22 @@ namespace ProjectManagerApp.UI.Pages
             var tasks = new List<List<Entities.Task>>();
             var statuses = App.DataBase.Status.ToList();
             var currentstatuses = new List<Entities.Status>();
+
             foreach(var status in statuses)
             {
                 status.Tasks = currentProjectTasks.Where(p => p.Status == status).ToList();
             }
-          
             spTasks.ItemsSource = statuses;
-           
+
+            float laborCost = Classes.LaborCost.CalcLaborCost(project);
+            laborCost = (float)Math.Round(laborCost, 2, MidpointRounding.AwayFromZero);
+            tblLaborCost.Text = $"Трудозатраты - {laborCost}ч.";
 
         }
         private void cellDGTasksMouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show((sender as UCs.DGTaskItem).DataContext.ToString());
+            
+
         }
 
         private void btnEditInfoClick(object sender, RoutedEventArgs e)

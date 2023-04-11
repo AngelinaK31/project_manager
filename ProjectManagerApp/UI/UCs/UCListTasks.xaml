@@ -11,12 +11,24 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-        <ListView x:Name="lvTasksToDo" Margin="10,0,10,5" ItemsSource="{Binding Tasks}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="1" AllowDrop="True" Drop="lvTasksToDo_Drop">
+        <Grid Margin="10 0 10 0">
+            <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0"/>
+            <Button Style="{StaticResource btnTranparent}" Width="20" Height="20" HorizontalAlignment="Right"  Click="btnAddTaskClick">
+                <Image Source="/Resources/plus.png"/>
+            </Button>
+        </Grid>
+        <ListView x:Name="lvTasksToDo" Margin="10,0,10,5" ItemsSource="{Binding Tasks}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="1" AllowDrop="True" Drop="lvTasksToDo_Drop" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonUp" Handler="lvPreviewMouseLeftButtonDown"/>
+                    <EventSetter Event="PreviewMouseDoubleClick" Handler="lvPreviewMouseLeftButtonDown"/>
                     <EventSetter Event="MouseMove" Handler="ListViewItem_MouseMove"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource LightBrown}" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>

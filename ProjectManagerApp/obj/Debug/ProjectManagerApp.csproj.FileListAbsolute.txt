@@ -74,3 +74,5 @@ D:\VSProgs\ProjectManager\ProjectManagerApp\bin\Debug\ru\EntityFramework.SqlServ
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.g.cs
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.baml
