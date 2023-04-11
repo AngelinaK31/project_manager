@@ -26,7 +26,7 @@ namespace ProjectManagerApp.Entities
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> CompletionDate { get; set; }
         public System.DateTime Deadline { get; set; }
-        public Nullable<int> LaborCost_h_ { get; set; }
+        public Nullable<double> LaborCost_h_ { get; set; }
         public string Description { get; set; }
         public Nullable<bool> IsCompleted { get; set; }
     

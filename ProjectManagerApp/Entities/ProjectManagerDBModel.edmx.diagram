@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fbf2cf6da6594693a6b4dee4c4e45b9b" Name="Diagram1">
-        <EntityTypeShape EntityType="ProjectManagerDBModel.CostOfWork" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.Gender" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.Mycroobject" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.Project" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.ProjectTeam" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.Task" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.TypeOfUser" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.TypeOfWork" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+      <Diagram DiagramId="503a15725b23459383843d30ea70071e" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectManagerDBModel.CostOfWork" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.Gender" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.Mycroobject" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.Project" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.ProjectTeam" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.Specialization" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.Status" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.Task" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.TypeOfUser" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDBModel.TypeOfWork" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDBModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_CostOfWork_Mycroobject" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_CostOfWork_TypeOfWork" ManuallyRouted="false" />
@@ -21,14 +23,12 @@
         <AssociationConnector Association="ProjectManagerDBModel.FK_Task_Mycroobject" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_Project_ProjectTeam" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_Task_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectManagerDBModel.FK_User_ProjectTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectManagerDBModel.FK_User_Specialization" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectManagerDBModel.FK_Task_Status" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_Task_TypeOfWork" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_Task_User" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectManagerDBModel.FK_User_TypeOfUser" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectManagerDBModel.TeamMember" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.Specialization" Width="1.5" PointX="7.375" PointY="4.875" />
-        <AssociationConnector Association="ProjectManagerDBModel.FK_User_Specialization" />
-        <EntityTypeShape EntityType="ProjectManagerDBModel.Status" Width="1.5" PointX="7.375" PointY="7.875" />
-        <AssociationConnector Association="ProjectManagerDBModel.FK_Task_Status" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

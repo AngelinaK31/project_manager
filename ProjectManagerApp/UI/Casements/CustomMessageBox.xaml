@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <TextBlock VerticalAlignment="Center" x:Name="tbxDesciption" HorizontalAlignment="Center" FontSize="16" />
+        <TextBlock VerticalAlignment="Center" x:Name="tbxDesciption" HorizontalAlignment="Center" FontSize="16" TextWrapping="Wrap"/>
         <Button Content="ОК" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Width="150" Name="btnOK" Click="btnOKClick"/>
     </Grid>
 </Window>

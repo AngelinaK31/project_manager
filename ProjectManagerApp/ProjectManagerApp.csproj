@@ -80,11 +80,6 @@
     <Compile Include="Classes\LaborCost.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\ProjectLib.cs" />
-    <Compile Include="Entities\PartialStatus.cs" />
-    <Compile Include="Entities\Status.cs">
-      <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TaskType.cs" />
     <Compile Include="Entities\CostOfWork.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -94,7 +89,7 @@
     <Compile Include="Entities\Mycroobject.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\PartialUser.cs" />
+    <Compile Include="Entities\PartialStatus.cs" />
     <Compile Include="Entities\Project.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -119,12 +114,17 @@
     <Compile Include="Entities\Specialization.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Status.cs">
+      <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sysdiagram.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Task.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\TaskType.cs" />
+    <Compile Include="Entities\PartialUser.cs" />
     <Compile Include="Entities\TypeOfUser.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -149,11 +149,20 @@
     <Compile Include="UI\Casements\WindHome.xaml.cs">
       <DependentUpon>WindHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\PageHome.xaml.cs">
+      <DependentUpon>PageHome.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\PageProject.xaml.cs">
       <DependentUpon>PageProject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\PageReports.xaml.cs">
+      <DependentUpon>PageReports.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\PageTask.xaml.cs">
       <DependentUpon>PageTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\PageTeams.xaml.cs">
+      <DependentUpon>PageTeams.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\UCs\DGTaskHeaderUC.xaml.cs">
       <DependentUpon>DGTaskHeaderUC.xaml</DependentUpon>
@@ -184,11 +193,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Pages\PageHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Pages\PageProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Pages\PageReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Pages\PageTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\PageTeams.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,7 +260,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Logo.ico" />
     <Resource Include="Resources\Logo.png" />
@@ -248,16 +268,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities\ProjectManagerDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
-      <LastGenOutput>ProjectManagerDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entities\ProjectManagerDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
-      <LastGenOutput>ProjectManagerDBModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\arrow_frw.png" />
     <Resource Include="Resources\vertical_menu.png" />
@@ -275,6 +285,18 @@
     <Resource Include="Resources\eye.png" />
     <Resource Include="Resources\eye_w.png" />
     <Resource Include="Resources\eye_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\ProjectManagerDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectManagerDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\ProjectManagerDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectManagerDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

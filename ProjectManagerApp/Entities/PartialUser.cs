@@ -19,5 +19,16 @@ namespace ProjectManagerApp.Entities
                 return fullName;
             }
         }
+
+        public string FullNameRow
+        {
+            get
+            {
+                var fullName = $"{SecondName} {FirstName}";
+                if (Patronymic != null)
+                    fullName += $" {Patronymic}";
+                return fullName;
+            }
+        }
     }
 }

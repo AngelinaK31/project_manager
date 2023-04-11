@@ -41,7 +41,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Specialization">
     <Key>
@@ -83,14 +83,6 @@
     <Property Name="ProjectId" Type="int" Nullable="false" />
     <Property Name="StatusId" Type="int" />
   </EntityType>
-  <EntityType Name="TeamMember">
-    <Key>
-      <PropertyRef Name="TeamId" />
-      <PropertyRef Name="MemberId" />
-    </Key>
-    <Property Name="TeamId" Type="int" Nullable="false" />
-    <Property Name="MemberId" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="TypeOfUser">
     <Key>
       <PropertyRef Name="Id" />
@@ -113,10 +105,11 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
-    <Property Name="Gender" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="GenderId" Type="nchar" MaxLength="1" Nullable="false" />
     <Property Name="TypeOfUserId" Type="int" Nullable="false" />
     <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Passwrord" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectTeamId" Type="int" />
     <Property Name="SpecializationId" Type="int" />
   </EntityType>
   <Association Name="FK_CostOfWork_Mycroobject">
@@ -215,30 +208,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TeamMember_ProjectTeam">
-    <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="1" />
-    <End Role="TeamMember" Type="Self.TeamMember" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProjectTeam">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TeamMember">
-        <PropertyRef Name="TeamId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamMember_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="TeamMember" Type="Self.TeamMember" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TeamMember">
-        <PropertyRef Name="MemberId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_User_Gender">
     <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -247,7 +216,19 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="User">
-        <PropertyRef Name="Gender" />
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_ProjectTeam">
+    <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTeam">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ProjectTeamId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -285,7 +266,6 @@
     <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TeamMember" EntityType="Self.TeamMember" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeOfUser" EntityType="Self.TypeOfUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeOfWork" EntityType="Self.TypeOfWork" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -321,16 +301,12 @@
       <End Role="User" EntitySet="User" />
       <End Role="Task" EntitySet="Task" />
     </AssociationSet>
-    <AssociationSet Name="FK_TeamMember_ProjectTeam" Association="Self.FK_TeamMember_ProjectTeam">
-      <End Role="ProjectTeam" EntitySet="ProjectTeam" />
-      <End Role="TeamMember" EntitySet="TeamMember" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamMember_User" Association="Self.FK_TeamMember_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="TeamMember" EntitySet="TeamMember" />
-    </AssociationSet>
     <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
       <End Role="Gender" EntitySet="Gender" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_ProjectTeam" Association="Self.FK_User_ProjectTeam">
+      <End Role="ProjectTeam" EntitySet="ProjectTeam" />
       <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Specialization" Association="Self.FK_User_Specialization">

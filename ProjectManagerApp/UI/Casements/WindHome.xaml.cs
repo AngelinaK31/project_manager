@@ -114,5 +114,10 @@ namespace ProjectManagerApp.UI.Casements
             else
                 btnBack.Visibility = Visibility.Collapsed;
         }
+
+        private void btnPageTeamsClick(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.PageTeams());
+        }
     }
 }

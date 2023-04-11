@@ -30,12 +30,12 @@ namespace ProjectManagerApp.Entities
         public virtual DbSet<Mycroobject> Mycroobjects { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<ProjectTeam> ProjectTeams { get; set; }
+        public virtual DbSet<Specialization> Specializations { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<TypeOfUser> TypeOfUsers { get; set; }
         public virtual DbSet<TypeOfWork> TypeOfWorks { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Specialization> Specializations { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
     }
 }

@@ -187,6 +187,28 @@
             <Setter Property="MinWidth" Value="150"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
+
+        <Style x:Key="GroupHeaderStyle" TargetType="GroupItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupItem">
+                        <StackPanel>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}Команда разработчиков №{0}">
+                                        <Binding Path="Name"/>
+                                    </MultiBinding>
+                                    
+                                </TextBlock.Text>
+                                
+                            </TextBlock>
+                            <ItemsPresenter/>
+                        </StackPanel>
+                       
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         
     </Application.Resources>
 </Application>

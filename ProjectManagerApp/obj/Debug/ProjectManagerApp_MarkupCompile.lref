@@ -1,11 +1,14 @@
-﻿D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
-FD:\VSProgs\ProjectManager\ProjectManagerApp\App.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Casements\CustomMessageBox.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Casements\WindAuth.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Casements\WindHome.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Pages\PageProject.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\Pages\PageTask.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\UCs\DGTaskHeaderUC.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\UCs\DGTaskItem.xaml;;
-FD:\VSProgs\ProjectManager\ProjectManagerApp\UI\UCs\UCListTasks.xaml;;
+﻿
+FD:\VS Progs\Project Manager\ProjectManagerApp\App.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Casements\CustomMessageBox.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Casements\WindAuth.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Casements\WindHome.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Pages\PageHome.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Pages\PageProject.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Pages\PageReports.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Pages\PageTask.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\Pages\PageTeams.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\UCs\DGTaskHeaderUC.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\UCs\DGTaskItem.xaml;;
+FD:\VS Progs\Project Manager\ProjectManagerApp\UI\UCs\UCListTasks.xaml;;
 

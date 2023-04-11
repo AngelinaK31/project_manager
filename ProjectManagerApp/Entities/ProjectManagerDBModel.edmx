@@ -46,7 +46,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Specialization">
           <Key>
@@ -88,14 +88,6 @@
           <Property Name="ProjectId" Type="int" Nullable="false" />
           <Property Name="StatusId" Type="int" />
         </EntityType>
-        <EntityType Name="TeamMember">
-          <Key>
-            <PropertyRef Name="TeamId" />
-            <PropertyRef Name="MemberId" />
-          </Key>
-          <Property Name="TeamId" Type="int" Nullable="false" />
-          <Property Name="MemberId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="TypeOfUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -118,10 +110,11 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
-          <Property Name="Gender" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="GenderId" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="TypeOfUserId" Type="int" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Passwrord" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProjectTeamId" Type="int" />
           <Property Name="SpecializationId" Type="int" />
         </EntityType>
         <Association Name="FK_CostOfWork_Mycroobject">
@@ -220,30 +213,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeamMember_ProjectTeam">
-          <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="1" />
-          <End Role="TeamMember" Type="Self.TeamMember" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProjectTeam">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeamMember">
-              <PropertyRef Name="TeamId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TeamMember_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="TeamMember" Type="Self.TeamMember" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeamMember">
-              <PropertyRef Name="MemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -252,7 +221,19 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="User">
-              <PropertyRef Name="Gender" />
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_ProjectTeam">
+          <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectTeam">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ProjectTeamId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -290,7 +271,6 @@
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TeamMember" EntityType="Self.TeamMember" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfUser" EntityType="Self.TypeOfUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfWork" EntityType="Self.TypeOfWork" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -326,16 +306,12 @@
             <End Role="User" EntitySet="User" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK_TeamMember_ProjectTeam" Association="Self.FK_TeamMember_ProjectTeam">
-            <End Role="ProjectTeam" EntitySet="ProjectTeam" />
-            <End Role="TeamMember" EntitySet="TeamMember" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeamMember_User" Association="Self.FK_TeamMember_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="TeamMember" EntitySet="TeamMember" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
             <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_ProjectTeam" Association="Self.FK_User_ProjectTeam">
+            <End Role="ProjectTeam" EntitySet="ProjectTeam" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Specialization" Association="Self.FK_User_Specialization">
@@ -389,7 +365,7 @@
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CompletionDate" Type="DateTime" Precision="0" />
           <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="LaborCost_h_" Type="Int32" />
+          <Property Name="LaborCost_h_" Type="Double" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsCompleted" Type="Boolean" />
           <NavigationProperty Name="ProjectTeam" Relationship="Self.FK_Project_ProjectTeam" FromRole="Project" ToRole="ProjectTeam" />
@@ -399,9 +375,25 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Projects" Relationship="Self.FK_Project_ProjectTeam" FromRole="ProjectTeam" ToRole="Project" />
-          <NavigationProperty Name="Users" Relationship="Self.TeamMember" FromRole="ProjectTeam" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_ProjectTeam" FromRole="ProjectTeam" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Specialization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Specialization" FromRole="Specialization" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Status" FromRole="Status" ToRole="Task" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -427,12 +419,12 @@
           <Property Name="TypeOFWorkId" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" />
           <NavigationProperty Name="Mycroobject" Relationship="Self.FK_Task_Mycroobject" FromRole="Task" ToRole="Mycroobject" />
           <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Task" ToRole="Project" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Task_Status" FromRole="Task" ToRole="Status" />
           <NavigationProperty Name="TypeOfWork" Relationship="Self.FK_Task_TypeOfWork" FromRole="Task" ToRole="TypeOfWork" />
           <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
-          <Property Name="StatusId" Type="Int32" />
-          <NavigationProperty Name="Status" Relationship="ProjectManagerDBModel.FK_Task_Status" FromRole="Task" ToRole="Status" />
         </EntityType>
         <EntityType Name="TypeOfUser">
           <Key>
@@ -459,16 +451,17 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="GenderId" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="TypeOfUserId" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Passwrord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Gender1" Relationship="Self.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <Property Name="ProjectTeamId" Type="Int32" />
+          <Property Name="SpecializationId" Type="Int32" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="ProjectTeam" Relationship="Self.FK_User_ProjectTeam" FromRole="User" ToRole="ProjectTeam" />
+          <NavigationProperty Name="Specialization" Relationship="Self.FK_User_Specialization" FromRole="User" ToRole="Specialization" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_User" FromRole="User" ToRole="Task" />
           <NavigationProperty Name="TypeOfUser" Relationship="Self.FK_User_TypeOfUser" FromRole="User" ToRole="TypeOfUser" />
-          <NavigationProperty Name="ProjectTeams" Relationship="Self.TeamMember" FromRole="User" ToRole="ProjectTeam" />
-          <Property Name="SpecializationId" Type="Int32" />
-          <NavigationProperty Name="Specialization" Relationship="ProjectManagerDBModel.FK_User_Specialization" FromRole="User" ToRole="Specialization" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CostOfWork_Mycroobject">
           <End Role="Mycroobject" Type="Self.Mycroobject" Multiplicity="1" />
@@ -502,7 +495,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="User">
-              <PropertyRef Name="Gender" />
+              <PropertyRef Name="GenderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -542,6 +535,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_ProjectTeam">
+          <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectTeam">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ProjectTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Specialization">
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SpecializationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Task_TypeOfWork">
           <End Role="TypeOfWork" Type="Self.TypeOfWork" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
@@ -578,16 +607,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="TeamMember">
-          <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="*" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="ProjectManagerDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CostOfWorks" EntityType="Self.CostOfWork" />
           <EntitySet Name="Genders" EntityType="Self.Gender" />
           <EntitySet Name="Mycroobjects" EntityType="Self.Mycroobject" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="ProjectTeams" EntityType="Self.ProjectTeam" />
+          <EntitySet Name="Specializations" EntityType="Self.Specialization" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
           <EntitySet Name="TypeOfUsers" EntityType="Self.TypeOfUser" />
@@ -617,6 +644,18 @@
             <End Role="Project" EntitySet="Projects" />
             <End Role="Task" EntitySet="Tasks" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_ProjectTeam" Association="Self.FK_User_ProjectTeam">
+            <End Role="ProjectTeam" EntitySet="ProjectTeams" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Specialization" Association="Self.FK_User_Specialization">
+            <End Role="Specialization" EntitySet="Specializations" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Status" Association="Self.FK_Task_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
           <AssociationSet Name="FK_Task_TypeOfWork" Association="Self.FK_Task_TypeOfWork">
             <End Role="TypeOfWork" EntitySet="TypeOfWorks" />
             <End Role="Task" EntitySet="Tasks" />
@@ -629,61 +668,7 @@
             <End Role="TypeOfUser" EntitySet="TypeOfUsers" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="TeamMember" Association="Self.TeamMember">
-            <End Role="ProjectTeam" EntitySet="ProjectTeams" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <EntitySet Name="Specializations" EntityType="ProjectManagerDBModel.Specialization" />
-          <AssociationSet Name="FK_User_Specialization" Association="ProjectManagerDBModel.FK_User_Specialization">
-            <End Role="Specialization" EntitySet="Specializations" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <EntitySet Name="Status" EntityType="ProjectManagerDBModel.Status" />
-          <AssociationSet Name="FK_Task_Status" Association="ProjectManagerDBModel.FK_Task_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Specialization">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="ProjectManagerDBModel.FK_User_Specialization" FromRole="Specialization" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_User_Specialization">
-          <End Type="ProjectManagerDBModel.Specialization" Role="Specialization" Multiplicity="0..1" />
-          <End Type="ProjectManagerDBModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Specialization">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="SpecializationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Status">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tasks" Relationship="ProjectManagerDBModel.FK_Task_Status" FromRole="Status" ToRole="Task" />
-        </EntityType>
-        <Association Name="FK_Task_Status">
-          <End Type="ProjectManagerDBModel.Status" Role="Status" Multiplicity="0..1" />
-          <End Type="ProjectManagerDBModel.Task" Role="Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Task">
-              <PropertyRef Name="StatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -737,6 +722,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Specializations">
+            <EntityTypeMapping TypeName="ProjectManagerDBModel.Specialization">
+              <MappingFragment StoreEntitySet="Specialization">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ProjectManagerDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="ProjectManagerDBModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -751,7 +752,6 @@
           <EntitySetMapping Name="Tasks">
             <EntityTypeMapping TypeName="ProjectManagerDBModel.Task">
               <MappingFragment StoreEntitySet="Task">
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ExecutorId" ColumnName="ExecutorId" />
@@ -762,6 +762,7 @@
                 <ScalarProperty Name="TypeOFWorkId" ColumnName="TypeOFWorkId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -784,39 +785,16 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="ProjectManagerDBModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="SecondName" ColumnName="SecondName" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
                 <ScalarProperty Name="TypeOfUserId" ColumnName="TypeOfUserId" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Passwrord" ColumnName="Passwrord" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="TeamMember" TypeName="ProjectManagerDBModel.TeamMember" StoreEntitySet="TeamMember">
-            <EndProperty Name="ProjectTeam">
-              <ScalarProperty Name="Id" ColumnName="TeamId" />
-            </EndProperty>
-            <EndProperty Name="User">
-              <ScalarProperty Name="Id" ColumnName="MemberId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="Specializations">
-            <EntityTypeMapping TypeName="ProjectManagerDBModel.Specialization">
-              <MappingFragment StoreEntitySet="Specialization">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="ProjectManagerDBModel.Status">
-              <MappingFragment StoreEntitySet="Status">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProjectTeamId" ColumnName="ProjectTeamId" />
+                <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
