@@ -31,7 +31,7 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
                     <Image Source="/Resources/gantt_chart96.png" Height="200"/>
-                    <TextBlock Text="Диаграмма Гантта" FontSize="25"/>
+                    <TextBlock Text="Диаграмма Ганта" FontSize="25"/>
                 </StackPanel>
 
             </Grid>
