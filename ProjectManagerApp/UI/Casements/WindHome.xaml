@@ -20,47 +20,48 @@
     <Grid Background="{StaticResource LightBlue}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid  Background="{StaticResource Blue}" Grid.ColumnSpan="2">
 
         </Grid>
 
-        <Grid Background="{StaticResource BlueOp}" Grid.Row="1">
+        <Grid Background="{StaticResource BlueOp}" Grid.Row="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="51"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid>
                 <StackPanel Margin="0 10 0 0 ">
-                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                    <Button  Style="{StaticResource btnTranparent}" Click="BtnHomeClick">
                         <StackPanel>
                             <Image Source="/Resources/home.png" Width="30"/>
-                            <TextBlock Text="Главная" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                            <TextBlock Text="Главная" FontSize="11" Foreground="Black" FontWeight="DemiBold" HorizontalAlignment="Center"/>
                         </StackPanel>
-                    </RadioButton>
-                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                    </Button>
+                    <Button Style="{StaticResource btnTranparent}" Click="Button_Click">
                         <StackPanel>
                             <Image Source="/Resources/project.png" Width="30"/>
-                            <TextBlock Text="Проекты" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                            <TextBlock Text="Проекты" FontSize="11" Foreground="Black" FontWeight="DemiBold" HorizontalAlignment="Center"/>
                         </StackPanel>
-                    </RadioButton>
-                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                    </Button>
+                    <Button Style="{StaticResource btnTranparent}" Click="btnPageTeamsClick">
                         <StackPanel>
                             <Image Source="/Resources/team.png" Width="30"/>
-                            <TextBlock Text="Команда" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                            <TextBlock Text="Команда" FontSize="11" Foreground="Black" FontWeight="DemiBold" HorizontalAlignment="Center"/>
                         </StackPanel>
-                    </RadioButton>
-                    <RadioButton Background="Transparent" BorderBrush="Transparent" GroupName="Menu">
+                    </Button>
+                    <Button Style="{StaticResource btnTranparent}" Click="btnReportClick" Name="btnReport">
                         <StackPanel>
                             <Image Source="/Resources/diagram.png" Width="30"/>
-                            <TextBlock Text="Отчеты" FontSize="11" Foreground="Black" FontWeight="DemiBold"/>
+                            <TextBlock Text="Отчеты" FontSize="11" Foreground="Black" FontWeight="DemiBold" HorizontalAlignment="Center"/>
                         </StackPanel>
-                    </RadioButton>
+                    </Button>
                     
                 </StackPanel>
 
@@ -74,37 +75,15 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <StackPanel Grid.Column="1">
-                <Button Content="Текущие проекты" Margin="10 15 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
-                <ListView Background="Transparent" Name="lvCurrentProjects" Visibility="Collapsed" BorderThickness="0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-                <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Background="Transparent"/>
-                <ListView Background="Transparent" Name="lvOldProjects" Visibility="Collapsed" BorderThickness="0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate >
-                            <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource WhiteBlock}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-            </StackPanel>
+            
         </Grid>
-        <Button Name="btnBack" Click="btnBackClick" Content="Назад" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Margin="5" Visibility="Collapsed"/>
-        <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden" Focusable="False" ContentRendered="MainFrameContentRendered"/>
+        
+        <Frame x:Name="MainFrame" Grid.Row="2" Grid.Column="1" NavigationUIVisibility="Hidden" Focusable="False" ContentRendered="MainFrameContentRendered"/>
+
+        <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource BlueOp}">
+            <Button Name="btnBack" Click="btnBackClick" Content="Назад" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Margin="5" Visibility="Collapsed"/>
+
+        </Grid>
     </Grid>
 
 </Window>

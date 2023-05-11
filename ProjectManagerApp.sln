@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagerApp", "ProjectManagerApp\ProjectManagerApp.csproj", "{6E21A3C9-5449-43CE-A984-D5A22CB0ECB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nGantt", "nGantt\nGantt.csproj", "{CCC54F28-5D20-4AB3-A1A8-C62CD2DA3AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagerAppTests", "ProjectManagerAppTests\ProjectManagerAppTests.csproj", "{8946C5FC-0D03-4A3C-AFE9-B5EE2F6C2C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6E21A3C9-5449-43CE-A984-D5A22CB0ECB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E21A3C9-5449-43CE-A984-D5A22CB0ECB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E21A3C9-5449-43CE-A984-D5A22CB0ECB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC54F28-5D20-4AB3-A1A8-C62CD2DA3AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC54F28-5D20-4AB3-A1A8-C62CD2DA3AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC54F28-5D20-4AB3-A1A8-C62CD2DA3AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC54F28-5D20-4AB3-A1A8-C62CD2DA3AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8946C5FC-0D03-4A3C-AFE9-B5EE2F6C2C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8946C5FC-0D03-4A3C-AFE9-B5EE2F6C2C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8946C5FC-0D03-4A3C-AFE9-B5EE2F6C2C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8946C5FC-0D03-4A3C-AFE9-B5EE2F6C2C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,72 @@
+﻿<Page x:Class="ProjectManagerApp.UI.Pages.PageInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectManagerApp.UI.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageInfo">
+
+    <StackPanel>
+        <TextBlock Text="Справка по методологии Балансов" HorizontalAlignment="Center" FontSize="20" Margin="5"/>
+        <Grid Height="400" Width="600" Margin="10" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.RowSpan="2" Text="Микрообъект ПО" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Text="Вид модификации / время за 1 модификацию(час)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="Корректировка" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Column="2" Grid.Row="1" Text="Измененние" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="Создание" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Text="Запрос к БД" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="0,6" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="2,4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="4,8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Text="Процедура" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="0,53" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="2,1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Grid.Column="3" Text="4,2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Text="Обработка события" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="0,45" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Grid.Column="2" Text="1,8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Grid.Column="3" Text="3,6" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Text="Экранная форма" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="0,38" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="2" Text="1,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="6" Text="Набор данных" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="0,3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="6" Grid.Column="2" Text="1,2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="6" Grid.Column="3" Text="2,4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="7" Text="Макет" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" Text="0,23" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="7" Grid.Column="2" Text="0,9" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="7" Grid.Column="3" Text="1,8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="8" Text="Документация" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="8" Grid.Column="1" Text="0,15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="8" Grid.Column="2" Text="0,6" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="8" Grid.Column="3" Text="1,2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="9" Text="Манипуляция с данными" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="9" Grid.Column="1" Text="0,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="9" Grid.Column="2" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="9" Grid.Column="3" Text="1,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+    </StackPanel>
+</Page>

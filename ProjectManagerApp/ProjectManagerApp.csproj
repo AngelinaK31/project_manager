@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ProjectManagerApp</RootNamespace>
     <AssemblyName>ProjectManagerApp</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,6 +58,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,9 +70,14 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\..\VSExtentions\Extended.WPF.Toolkit.Binaries.NET.4.x\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -76,15 +85,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Authorization.cs" />
-    <Compile Include="Classes\DataGridTaskGenerator.cs" />
     <Compile Include="Classes\LaborCost.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\ProjectLib.cs" />
-    <Compile Include="Entities\PartialStatus.cs" />
-    <Compile Include="Entities\Status.cs">
-      <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TaskType.cs" />
+    <Compile Include="Classes\UserHolder.cs" />
     <Compile Include="Entities\CostOfWork.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -94,7 +98,6 @@
     <Compile Include="Entities\Mycroobject.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\PartialUser.cs" />
     <Compile Include="Entities\Project.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -119,12 +122,16 @@
     <Compile Include="Entities\Specialization.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Status.cs">
+      <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sysdiagram.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Task.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\PartialUser.cs" />
     <Compile Include="Entities\TypeOfUser.cs">
       <DependentUpon>ProjectManagerDBModel.tt</DependentUpon>
     </Compile>
@@ -136,6 +143,9 @@
     </Compile>
     <Compile Include="Styles\MessageBox\MessageBoxStyle.cs" />
     <Compile Include="Styles\Window\WindowStyle.cs" />
+    <Compile Include="UI\Casements\CustomMessageBoxYesNo.xaml.cs">
+      <DependentUpon>CustomMessageBoxYesNo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Casements\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
@@ -149,11 +159,29 @@
     <Compile Include="UI\Casements\WindHome.xaml.cs">
       <DependentUpon>WindHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\PageAddProject.xaml.cs">
+      <DependentUpon>PageAddProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\PageGanttReport.xaml.cs">
+      <DependentUpon>PageGanttReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\PageHome.xaml.cs">
+      <DependentUpon>PageHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\PageInfo.xaml.cs">
+      <DependentUpon>PageInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\PageProject.xaml.cs">
       <DependentUpon>PageProject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\PageReports.xaml.cs">
+      <DependentUpon>PageReports.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\PageTask.xaml.cs">
       <DependentUpon>PageTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\PageTeams.xaml.cs">
+      <DependentUpon>PageTeams.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\UCs\DGTaskHeaderUC.xaml.cs">
       <DependentUpon>DGTaskHeaderUC.xaml</DependentUpon>
@@ -164,6 +192,9 @@
     <Compile Include="UI\UCs\UCListTasks.xaml.cs">
       <DependentUpon>UCListTasks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\UCs\UCReport.xaml.cs">
+      <DependentUpon>UCReport.xaml</DependentUpon>
+    </Compile>
     <Page Include="Styles\MessageBox\MessageBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -171,6 +202,10 @@
     <Page Include="Styles\Window\WindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Casements\CustomMessageBoxYesNo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Casements\CustomMessageBox.xaml">
       <SubType>Designer</SubType>
@@ -184,11 +219,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Pages\PageAddProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\PageGanttReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\PageHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\PageInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Pages\PageProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Pages\PageReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Pages\PageTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\PageTeams.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\UCs\UCListTasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UCs\UCReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,7 +302,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Logo.ico" />
     <Resource Include="Resources\Logo.png" />
@@ -248,16 +310,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities\ProjectManagerDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
-      <LastGenOutput>ProjectManagerDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entities\ProjectManagerDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
-      <LastGenOutput>ProjectManagerDBModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\arrow_frw.png" />
     <Resource Include="Resources\vertical_menu.png" />
@@ -275,6 +327,29 @@
     <Resource Include="Resources\eye.png" />
     <Resource Include="Resources\eye_w.png" />
     <Resource Include="Resources\eye_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gantt_chart96.png" />
+    <Resource Include="Resources\gantt_chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nGantt\nGantt.csproj">
+      <Project>{ccc54f28-5d20-4ab3-a1a8-c62cd2da3ae7}</Project>
+      <Name>nGantt</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\ProjectManagerDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectManagerDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\ProjectManagerDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectManagerDBModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectManagerDBModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Resources\minus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,9 +15,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+
         <Grid>
             <TextBlock Text="{Binding Name}" VerticalAlignment="Top" Margin="5" HorizontalAlignment="Left"/>
-            <TextBlock x:Name="tblLaborCost" HorizontalAlignment="Right" Margin="0 0 50 0"/>
+            <StackPanel Margin="0 0 50 0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button Style="{StaticResource btnTranparent}" VerticalAlignment="Top" Click="btnInfoClick">
+                    <Image Source="/Resources/info.png" Height="18"/>
+                </Button>
+                <TextBlock x:Name="tblLaborCost"   ToolTip="Трудозатраты рассчитываются по системе балансов" />
+
+            </StackPanel>
             <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource btnTranparent}" Click="btnShowInfoClick">
                 <Image Source="/Resources/vertical_menu.png" Height="30"/>
             </Button>
@@ -80,15 +87,47 @@
             </StackPanel>
 
 
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" >
-                <Button Content="Рассчитать трудозатраты" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Name="spEditProject">
+                <Button Content="Удалить проект" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 5"  Click="btnDelProjectClick"/>
 
                 <Button Content="Отредактировать"  Click="btnEditInfoClick" Name="btnEditInfo" Margin="0 0 0 5"/>
                 <Button Content="Сохранить изменения"  Click="btnSaveClik" Name="btnSave" Visibility="Collapsed" Margin="0 0 0 5"/>
             </StackPanel>
         </Grid>
 
-       
+
+        <StackPanel Grid.RowSpan="2" HorizontalAlignment="Left" Visibility="Collapsed" Name="spProjects" Background="{StaticResource BlueOp}">
+            <Button HorizontalAlignment="Right" Style="{StaticResource btnTranparent}" Height="30" Click="btnAddProjectClick" Name="btnAddProject">
+                <Image Source="/Resources/plus.png"/>
+            </Button>
+            <Button Content="Текущие проекты" Margin="10 0 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Style="{StaticResource btnList}"/>
+            <ListView Background="Transparent" Name="lvCurrentProjects" Visibility="Collapsed" BorderThickness="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource BlackBlock}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left"  Style="{StaticResource btnList}"/>
+            <ListView Background="Transparent" Name="lvOldProjects" Visibility="Collapsed" BorderThickness="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource BlackBlock}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </StackPanel>
+
 
     </Grid>
 </Page>

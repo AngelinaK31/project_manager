@@ -1,0 +1,46 @@
+﻿<Page x:Class="ProjectManagerApp.UI.Pages.PageReports"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectManagerApp.UI.Pages"
+      xmlns:locals="clr-namespace:ProjectManagerApp.UI.UCs"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageReports">
+
+    <WrapPanel>
+        <Border BorderThickness="3" BorderBrush="{StaticResource LightBrown}" CornerRadius="10" Margin="25">
+            <Grid Width="250" Height="300" PreviewMouseLeftButtonUp="Grid_PreviewMouseLeftButtonUp" >
+
+
+
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource LightBrown}"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                    <Image Source="/Resources/gantt_chart96.png" Height="200"/>
+                    <TextBlock Text="Диаграмма Гантта" FontSize="25"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+
+
+
+
+
+    </WrapPanel>
+</Page>

@@ -84,7 +84,7 @@ namespace ProjectManagerApp.Classes
 
                 }
             }
-
+            laborCost = (float)Math.Round(laborCost, 2, MidpointRounding.AwayFromZero);
             return laborCost;
         }
     }

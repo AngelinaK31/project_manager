@@ -1,4 +1,5 @@
 ﻿using ProjectManagerApp.Classes;
+using ProjectManagerApp.UI.Casements;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,10 @@ namespace ProjectManagerApp.UI.UCs
         {
             InitializeComponent();
             
+            if(UserHolder.User.TypeOfUserId != 1)
+            {
+                btnAddTask.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void lvPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -38,9 +43,18 @@ namespace ProjectManagerApp.UI.UCs
 
         private void ListViewItem_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            var task = (Entities.Task)(sender as ListViewItem).DataContext;
+            if (e.LeftButton == MouseButtonState.Pressed && UserHolder.User == task.User)
             {
                 DragDrop.DoDragDrop(sender as ListViewItem, new DataObject(DataFormats.Serializable, (sender as ListViewItem).DataContext), DragDropEffects.Move);
+            }
+            else if(e.LeftButton == MouseButtonState.Pressed && UserHolder.User != task.User)
+            {
+                CustomMessageBox.Show("Внимание", "Вы не можете изменить статус задачи, за которую Вы не ответственны!");
+            }
+            else if (e.LeftButton == MouseButtonState.Pressed && UserHolder.User.TypeOfUserId == 3)
+            {
+                CustomMessageBox.Show("Внимание", "Вы не можете изменять статус задач!");
             }
         }
 
@@ -52,17 +66,29 @@ namespace ProjectManagerApp.UI.UCs
 
             Entities.Status statusTaskToRemove = App.DataBase.Status.FirstOrDefault(s=>s.Id == task.StatusId);
             statusTaskToRemove.Tasks.Remove(task);
-
+            
             list.Tasks.Add(task);
-            App.DataBase.SaveChanges();
+            task.StatusId = list.Id;
 
+            if (task.StatusId == 4)
+            {
+                task.CompletionDate = DateTime.Now;
+            }
+            else
+            {
+                task.CompletionDate = null;
+            }
+
+            App.DataBase.SaveChanges();
             Manager._frame.Navigate(new Pages.PageProject(task.Project));
         }
 
         private void btnAddTaskClick(object sender, RoutedEventArgs e)
         {
+          
+                Manager._frame.Navigate(new Pages.PageTask(null, this.DataContext as Entities.Status));
+
             
-            Manager._frame.Navigate(new Pages.PageTask(null, this.DataContext as Entities.Status));
         }
 
         

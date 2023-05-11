@@ -18,25 +18,24 @@ namespace ProjectManagerApp.Entities
         public User()
         {
             this.Tasks = new HashSet<Task>();
-            this.ProjectTeams = new HashSet<ProjectTeam>();
         }
     
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Patronymic { get; set; }
-        public string Gender { get; set; }
+        public string GenderId { get; set; }
         public int TypeOfUserId { get; set; }
         public string Login { get; set; }
-        public string Passwrord { get; set; }
+        public string Password { get; set; }
+        public Nullable<int> ProjectTeamId { get; set; }
         public Nullable<int> SpecializationId { get; set; }
     
-        public virtual Gender Gender1 { get; set; }
+        public virtual Gender Gender { get; set; }
+        public virtual ProjectTeam ProjectTeam { get; set; }
+        public virtual Specialization Specialization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
         public virtual TypeOfUser TypeOfUser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectTeam> ProjectTeams { get; set; }
-        public virtual Specialization Specialization { get; set; }
     }
 }

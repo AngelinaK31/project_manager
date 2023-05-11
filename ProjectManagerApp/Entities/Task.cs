@@ -28,8 +28,8 @@ namespace ProjectManagerApp.Entities
     
         public virtual Mycroobject Mycroobject { get; set; }
         public virtual Project Project { get; set; }
+        public virtual Status Status { get; set; }
         public virtual TypeOfWork TypeOfWork { get; set; }
         public virtual User User { get; set; }
-        public virtual Status Status { get; set; }
     }
 }

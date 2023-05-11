@@ -76,3 +76,126 @@ D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.g.cs
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.baml
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.g.cs
 D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\ProjectManagerApp.exe.config
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\ProjectManagerApp.exe
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\ProjectManagerApp.pdb
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\EntityFramework.dll
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\EntityFramework.SqlServer.dll
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\FontAwesome.WPF.dll
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\EntityFramework.xml
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\EntityFramework.SqlServer.xml
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\FontAwesome.WPF.xml
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\ru\EntityFramework.resources.dll
+D:\VS Progs\Project Manager\ProjectManagerApp\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.AssemblyReference.cache
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.SuggestedBindingRedirects.cache
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\Styles\MessageBox\MessageBoxStyle.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\Styles\Window\WindowStyle.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\Styles\MessageBox\MessageBoxStyle.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\Styles\Window\WindowStyle.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Casements\WindAuth.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Casements\WindHome.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageProject.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskHeaderUC.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskItem.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\App.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp_Content.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp_MarkupCompile.cache
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp_MarkupCompile.lref
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\App.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Casements\WindAuth.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Casements\WindHome.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageProject.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskHeaderUC.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskItem.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.g.resources
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.Properties.Resources.resources
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.GenerateResource.cache
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.CoreCompileInputs.cache
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.CopyComplete
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.exe
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\ProjectManagerApp.pdb
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageHome.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageReports.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageTeams.g.cs
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageHome.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageReports.baml
+D:\VS Progs\Project Manager\ProjectManagerApp\obj\Debug\UI\Pages\PageTeams.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\ProjectManagerApp.exe.config
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\ProjectManagerApp.exe
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\ProjectManagerApp.pdb
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\EntityFramework.dll
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\FontAwesome.WPF.dll
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\EntityFramework.xml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\FontAwesome.WPF.xml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.AssemblyReference.cache
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\Styles\MessageBox\MessageBoxStyle.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\Styles\Window\WindowStyle.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\Styles\MessageBox\MessageBoxStyle.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\Styles\Window\WindowStyle.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Casements\WindAuth.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Casements\WindHome.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageHome.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageProject.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageReports.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageTeams.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskHeaderUC.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskItem.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\App.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp_Content.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp_MarkupCompile.cache
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp_MarkupCompile.lref
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\App.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBox.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Casements\WindAuth.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Casements\WindHome.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageHome.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageProject.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageReports.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageTask.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\Pages\PageTeams.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskHeaderUC.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\UCs\DGTaskItem.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\UI\UCs\UCListTasks.baml
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.g.resources
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.Properties.Resources.resources
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.GenerateResource.cache
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.CoreCompileInputs.cache
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.csproj.CopyComplete
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.exe
+C:\Users\Angelina\Desktop\project_manager-work_branch\ProjectManagerApp\obj\Debug\ProjectManagerApp.pdb
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageHome.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageTeams.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\bin\Debug\nGantt.dll
+D:\VSProgs\ProjectManager\ProjectManagerApp\bin\Debug\nGantt.pdb
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageReports.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageHome.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageReports.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageTeams.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageGanttReport.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageGanttReport.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCReport.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\UCs\UCReport.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageAddProject.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageAddProject.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBoxYesNo.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Casements\CustomMessageBoxYesNo.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageInfo.g.cs
+D:\VSProgs\ProjectManager\ProjectManagerApp\obj\Debug\UI\Pages\PageInfo.baml
+D:\VSProgs\ProjectManager\ProjectManagerApp\bin\Debug\Xceed.Wpf.Toolkit.dll

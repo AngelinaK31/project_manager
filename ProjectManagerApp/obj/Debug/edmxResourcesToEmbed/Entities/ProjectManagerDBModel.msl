@@ -48,6 +48,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Specializations">
+      <EntityTypeMapping TypeName="ProjectManagerDBModel.Specialization">
+        <MappingFragment StoreEntitySet="Specialization">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="ProjectManagerDBModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="ProjectManagerDBModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -62,7 +78,6 @@
     <EntitySetMapping Name="Tasks">
       <EntityTypeMapping TypeName="ProjectManagerDBModel.Task">
         <MappingFragment StoreEntitySet="Task">
-          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ExecutorId" ColumnName="ExecutorId" />
@@ -73,6 +88,7 @@
           <ScalarProperty Name="TypeOFWorkId" ColumnName="TypeOFWorkId" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -95,39 +111,16 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="ProjectManagerDBModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="SecondName" ColumnName="SecondName" />
           <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
           <ScalarProperty Name="TypeOfUserId" ColumnName="TypeOfUserId" />
           <ScalarProperty Name="Login" ColumnName="Login" />
-          <ScalarProperty Name="Passwrord" ColumnName="Passwrord" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="TeamMember" TypeName="ProjectManagerDBModel.TeamMember" StoreEntitySet="TeamMember">
-      <EndProperty Name="ProjectTeam">
-        <ScalarProperty Name="Id" ColumnName="TeamId" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="MemberId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <EntitySetMapping Name="Specializations">
-      <EntityTypeMapping TypeName="ProjectManagerDBModel.Specialization">
-        <MappingFragment StoreEntitySet="Specialization">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Status">
-      <EntityTypeMapping TypeName="ProjectManagerDBModel.Status">
-        <MappingFragment StoreEntitySet="Status">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ProjectTeamId" ColumnName="ProjectTeamId" />
+          <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

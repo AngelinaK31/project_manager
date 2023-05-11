@@ -20,12 +20,12 @@ namespace ProjectManagerApp.Styles
 
         private void WindStateChanged(object sender, EventArgs e)
         {
-            System.Windows.Window me = (sender as System.Windows.Window);
-            Button btnResizeCaption = me.Template.FindName("btnResize", me) as Button;
-            if(btnResizeCaption != null)
-            {
-                btnResizeCaption.Content = me.WindowState == System.Windows.WindowState.Maximized ? "2" : "1";
-            }
+            //System.Windows.Window me = (sender as System.Windows.Window);
+            //Button btnResizeCaption = me.Template.FindName("btnResize", me) as Button;
+            //if(btnResizeCaption != null)
+            //{
+            //    btnResizeCaption.Content = me.WindowState == System.Windows.WindowState.Maximized ? "2" : "1";
+            //}
         }
 
         private void btnCloseClick( object sender, RoutedEventArgs e)

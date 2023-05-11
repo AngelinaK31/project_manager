@@ -14,7 +14,7 @@ namespace ProjectManagerApp.Classes
 
             foreach (var user in users)
             {
-                if (user.Login == login && user.Passwrord == password)
+                if (user.Login == login && user.Password == password)
                 {
                     currentUser = user;
                     return true;

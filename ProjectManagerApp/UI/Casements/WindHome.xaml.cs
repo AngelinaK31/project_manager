@@ -20,33 +20,30 @@ namespace ProjectManagerApp.UI.Casements
     /// </summary>
     public partial class WindHome : Window
     {
+
         public WindHome(Entities.User user)
         {
             InitializeComponent();
 
-            
-            lvCurrentProjects.ItemsSource = App.DataBase.Projects.Where(p=>p.IsCompleted == false).ToList();
-            lvOldProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == true).ToList();
+            UserHolder.User = user;
+            Manager._frame = MainFrame;
+
+            Manager._frame.Navigate(new Pages.PageHome());
+
+
+            if (user.TypeOfUserId == 2 )
+            {
+                btnReport.Visibility = Visibility.Hidden;
+                btnReport.IsEnabled = false;
+            }
         }
 
         
 
 
-        private void btnCurrentProjectsClick(object sender, RoutedEventArgs e)
-        {
-            if(lvCurrentProjects.Visibility == Visibility.Collapsed)
-                lvCurrentProjects.Visibility = Visibility.Visible;
-            else
-                lvCurrentProjects.Visibility = Visibility.Collapsed;
-        }
+        
 
-        private void btnOldProjectsClick(object sender, RoutedEventArgs e)
-        {
-            if (lvOldProjects.Visibility == Visibility.Collapsed)
-                lvOldProjects.Visibility = Visibility.Visible;
-            else
-                lvOldProjects.Visibility = Visibility.Collapsed;
-        }
+       
 
         private void btnExitClick(object sender, RoutedEventArgs e)
         {
@@ -56,12 +53,7 @@ namespace ProjectManagerApp.UI.Casements
         }
 
 
-        private void ListViewItemCLick(object sender, MouseButtonEventArgs e)
-        {
-
-            MainFrame.Navigate(new Pages.PageProject(((ListViewItem)sender).DataContext as Entities.Project));
-            Manager._frame = MainFrame;
-        }
+        
 
         private void btnCloseWind(object sender, RoutedEventArgs e)
         {
@@ -113,6 +105,26 @@ namespace ProjectManagerApp.UI.Casements
             }
             else
                 btnBack.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnPageTeamsClick(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.PageTeams());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.PageProject(null));
+        }
+
+        private void btnReportClick(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.PageReports());
+        }
+
+        private void BtnHomeClick(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.PageHome());
         }
     }
 }

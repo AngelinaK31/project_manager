@@ -1,0 +1,28 @@
+﻿<Page x:Class="ProjectManagerApp.UI.Pages.PageGanttReport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectManagerApp.UI.Pages"
+      xmlns:local1 ="clr-namespace:nGantt;assembly=nGantt"
+      mc:Ignorable="d" 
+      Title="PageGanttReport">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="137*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="Выберите проект:" VerticalAlignment="Center"/>
+            <ComboBox Name="cbProjects" DisplayMemberPath="Name"/>
+            <TextBlock Text="Выберите отчетный период:" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            <DatePicker Name="dpStartDate"/>
+            <TextBlock Text="-" VerticalAlignment="Center"/>
+            <DatePicker Name="dpEndDate"/>
+            <Button  Content="Сформировать диаграмму" Click="btnFormDiagClick"/>
+        </StackPanel>
+        
+        <local1:GanttControl Name="gantReport" Grid.Row="1"/>
+    </Grid>
+</Page>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\VSProgs\ProjectManager\ProjectManagerApp\App.xaml
-10-1190250280
+18-2033205853
 2-1109736879
-37-696271315
-20-1705951671
-Styles\MessageBox\MessageBoxStyle.xaml;Styles\Window\WindowStyle.xaml;UI\Casements\CustomMessageBox.xaml;UI\Casements\WindAuth.xaml;UI\Casements\WindHome.xaml;UI\Pages\PageProject.xaml;UI\Pages\PageTask.xaml;UI\UCs\DGTaskHeaderUC.xaml;UI\UCs\DGTaskItem.xaml;UI\UCs\UCListTasks.xaml;
+43630787109
+271676554764
+Styles\MessageBox\MessageBoxStyle.xaml;Styles\Window\WindowStyle.xaml;UI\Casements\CustomMessageBoxYesNo.xaml;UI\Casements\CustomMessageBox.xaml;UI\Casements\WindAuth.xaml;UI\Casements\WindHome.xaml;UI\Pages\PageAddProject.xaml;UI\Pages\PageGanttReport.xaml;UI\Pages\PageHome.xaml;UI\Pages\PageInfo.xaml;UI\Pages\PageProject.xaml;UI\Pages\PageReports.xaml;UI\Pages\PageTask.xaml;UI\Pages\PageTeams.xaml;UI\UCs\DGTaskHeaderUC.xaml;UI\UCs\DGTaskItem.xaml;UI\UCs\UCListTasks.xaml;UI\UCs\UCReport.xaml;
 
 False
 
