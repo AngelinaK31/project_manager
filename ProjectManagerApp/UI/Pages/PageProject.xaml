@@ -15,9 +15,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
         <Grid>
-            <TextBlock Text="{Binding Name}" VerticalAlignment="Top" Margin="5" HorizontalAlignment="Left"/>
+            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="20 5 5 5" HorizontalAlignment="Left" FontSize="18"/>
             <StackPanel Margin="0 0 50 0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                 <Button Style="{StaticResource btnTranparent}" VerticalAlignment="Top" Click="btnInfoClick">
                     <Image Source="/Resources/info.png" Height="18"/>
@@ -30,10 +29,9 @@
             </Button>
         </Grid>
 
+       
 
-
-
-        <ListView Grid.Row="1" Name="spTasks" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <ListView Grid.Row="1">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4"/>
@@ -51,14 +49,20 @@
                     </Setter>
                 </Style>
             </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <local1:UCListTasks/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+
+            <ListViewItem>
+                <local1:UCListTasks x:Name="listStat1"/>
+            </ListViewItem>
+            <ListViewItem>
+                <local1:UCListTasks x:Name="listStat2"/>
+            </ListViewItem>
+            <ListViewItem>
+                <local1:UCListTasks x:Name="listStat3"/>
+            </ListViewItem>
+            <ListViewItem>
+                <local1:UCListTasks x:Name="listStat4"/>
+            </ListViewItem>
         </ListView>
-
-
 
         <Grid   Name="gInfo" Width="300" Background="{StaticResource Blue}" HorizontalAlignment="Right" Grid.RowSpan="2" Visibility="Collapsed">
             <Button VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource btnTranparent}" Click="btnHideInfoClick">
@@ -72,7 +76,8 @@
 
                 <StackPanel Orientation="Horizontal" Name="spDescription" Margin="5 20">
                     <TextBlock Style="{StaticResource BlackBlock}" Text="Описание: " VerticalAlignment="Top"/>
-                    <TextBox Name="tbxDescription" Text="{Binding Description}" TextWrapping="Wrap" Width="200" Height="auto" AcceptsReturn="True" Style="{StaticResource EditBox}" IsEnabled="False"/>
+                    <TextBox Name="tbxDescription" Text="{Binding Description}" TextWrapping="Wrap" Width="200" Height="auto" 
+                             AcceptsReturn="True" Style="{StaticResource EditBox}" IsEnabled="False"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="5 20 5 5">
@@ -100,7 +105,8 @@
             <Button HorizontalAlignment="Right" Style="{StaticResource btnTranparent}" Height="30" Click="btnAddProjectClick" Name="btnAddProject">
                 <Image Source="/Resources/plus.png"/>
             </Button>
-            <Button Content="Текущие проекты" Margin="10 0 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left" Style="{StaticResource btnList}"/>
+            <Button Content="Текущие проекты" Margin="10 10 10 5" Click="btnCurrentProjectsClick" BorderThickness="0" 
+                    HorizontalContentAlignment="Left" Style="{StaticResource btnList}"/>
             <ListView Background="Transparent" Name="lvCurrentProjects" Visibility="Collapsed" BorderThickness="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -113,19 +119,18 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
-            <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left"  Style="{StaticResource btnList}"/>
+            <Button Content="Архив" Margin="10 5 10 5" Click="btnOldProjectsClick" BorderThickness="0" HorizontalContentAlignment="Left"  
+                    Style="{StaticResource btnList}"/>
             <ListView Background="Transparent" Name="lvOldProjects" Visibility="Collapsed" BorderThickness="0">
                 <ListView.ItemTemplate>
-                    <DataTemplate >
+                    <DataTemplate>
                         <TextBlock Text="{Binding Name}" FontSize="16" Style="{StaticResource BlackBlock}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemCLick"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
+                
             </ListView>
+            
+            
         </StackPanel>
 
 

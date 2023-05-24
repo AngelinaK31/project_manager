@@ -36,6 +36,8 @@ namespace ProjectManagerApp.UI.Pages
 
             lvTasks.ItemsSource = App.DataBase.Tasks.Where(task => task.ExecutorId == UserHolder.User.Id && task.StatusId != 4).ToList();
 
+            
+
         }
 
         

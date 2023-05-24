@@ -12,12 +12,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Margin="10 0 10 0">
-            <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0"/>
+            <TextBlock Text="{Binding Status.Name}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0"/>
             <Button Style="{StaticResource btnTranparent}" Width="20" Height="20" HorizontalAlignment="Right"  Click="btnAddTaskClick" Name="btnAddTask">
                 <Image Source="/Resources/plus.png"/>
             </Button>
         </Grid>
-        <ListView x:Name="lvTasksToDo" Margin="10,0,10,5" ItemsSource="{Binding Tasks}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="1" AllowDrop="True" Drop="lvTasksToDo_Drop" >
+        <ListView x:Name="lvTasksToDo" Margin="10,0,10,5" ItemsSource="{Binding Tasks}"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="1" AllowDrop="True" Drop="lvTasksToDo_Drop" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <EventSetter Event="PreviewMouseDoubleClick" Handler="lvPreviewMouseLeftButtonDown"/>

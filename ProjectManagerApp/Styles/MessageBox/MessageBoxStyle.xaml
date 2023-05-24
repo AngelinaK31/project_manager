@@ -31,9 +31,7 @@
                                     <Image Source="/Resources/Logo.png" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
                                     <TextBlock Text="{TemplateBinding Title}" Style="{StaticResource WhiteBlock}" FontSize="14" VerticalAlignment="Center" Margin="40 0 0 0"/>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                        <Button x:Name="btnHide" Style="{StaticResource btnTranparent}" Height="27" Width="27" Click="btnHideClick">
-                                            <Image Source="/Resources/hide_win.png" Margin="0 7 0 0" Height="20"/>
-                                        </Button>
+                                        
 
                                         <Button x:Name="btnClose" Style="{StaticResource btnTranparent}" Height="27" Width="27" Click="btnCloseClick">
                                             <Image Source="/Resources/close_win.png" Height="20"/>

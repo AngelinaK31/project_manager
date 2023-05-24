@@ -1,4 +1,5 @@
 ﻿using ProjectManagerApp.Classes;
+using ProjectManagerApp.Entities;
 using ProjectManagerApp.UI.Casements;
 using ProjectManagerApp.UI.UCs;
 using System;
@@ -51,34 +52,71 @@ namespace ProjectManagerApp.UI.Pages
 
         private void btnAddNewUserClick(object sender, RoutedEventArgs e)
         {
-            if(_user != null)
+            if (CheckTask(_user))
             {
-                _user.TypeOfUserId = 2;
-
-                try
+                if (_user != null)
                 {
-                    App.DataBase.Users.Add(_user);
-                    App.DataBase.SaveChanges();
-                    CustomMessageBox customMessage = new CustomMessageBox("Сообщение", "Сотрудник успешно добавлен");
-                    customMessage.ShowDialog();
-                    fillDG();
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    StringBuilder sb = new StringBuilder();
-                    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                    if ((cbSpecialization.SelectedItem as Entities.Specialization).Id == 4)
                     {
-                        sb.AppendLine("Object: " + validationError.Entry.Entity.ToString());
-                        
-                        foreach (DbValidationError err in validationError.ValidationErrors)
-                        {
-                            sb.AppendLine(err.ErrorMessage + "");
-                        }
+                        _user.TypeOfUserId = 1;
                     }
-                    CustomMessageBox customMessage = new CustomMessageBox("Ошибка", sb.ToString());
-                    customMessage.ShowDialog();
+                    _user.TypeOfUserId = 2;
+
+
+                    try
+                    {
+                        App.DataBase.Users.Add(_user);
+                        App.DataBase.SaveChanges();
+                        CustomMessageBox customMessage = new CustomMessageBox("Сообщение", "Сотрудник успешно добавлен");
+                        customMessage.ShowDialog();
+                        fillDG();
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                        {
+                            sb.AppendLine("Object: " + validationError.Entry.Entity.ToString());
+
+                            foreach (DbValidationError err in validationError.ValidationErrors)
+                            {
+                                sb.AppendLine(err.ErrorMessage + "");
+                            }
+                        }
+                        CustomMessageBox customMessage = new CustomMessageBox("Ошибка", sb.ToString());
+                        customMessage.ShowDialog();
+                    }
+
+
+
                 }
             }
+        }
+
+
+        private bool CheckTask(Entities.User user)
+        {
+            StringBuilder errors = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(user.FirstName))
+                errors.AppendLine("Введите имя");
+            if (string.IsNullOrWhiteSpace(user.SecondName))
+                errors.AppendLine("Введите фамилию");
+            if (user.Gender == null)
+                errors.AppendLine("Выберите пол");
+            if (user.Specialization == null)
+                errors.AppendLine("Выберите специализацию");
+            if (string.IsNullOrWhiteSpace(user.Login))
+                errors.AppendLine("Введите логин");
+            if (string.IsNullOrWhiteSpace(user.Login))
+                errors.AppendLine("Введите пароль");
+
+            if (errors.Length > 0)
+            {
+                CustomMessageBox.Show("Внимание", errors.ToString());
+                return false;
+            }
+            return true;
         }
 
         private void btnShowAddUserClick(object sender, RoutedEventArgs e)

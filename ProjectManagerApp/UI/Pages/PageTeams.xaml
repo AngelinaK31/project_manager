@@ -15,25 +15,17 @@
         </Grid.RowDefinitions>
 
         <Grid >
-            <TextBlock Text="Команды разработчиков" VerticalAlignment="Center" FontSize="25"/>
+            <TextBlock Text="Команды разработчиков" VerticalAlignment="Center" FontSize="20" Margin="20 0 0 0"/>
 
         </Grid>
 
         <DataGrid x:Name="dgTeams" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" Margin="15" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Stretch">
             <DataGrid.Columns>
-                
+
                 <DataGridTextColumn Header="Ф.И.О" Binding="{Binding Path=FullNameRow}" FontSize="16"/>
                 <DataGridTextColumn Header="Должность" Binding="{Binding Path=Specialization.Name}" FontSize="16"/>
                 <DataGridTextColumn Header="Уровень доступа" Binding="{Binding Path=TypeOfUserId}" FontSize="16"/>
-                <!--<DataGridTemplateColumn Width="25">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="btnDeleteUserClick" Style="{StaticResource btnTranparent}">
-                                <Image Source="/Resources/minus.png" Width="27"/>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
+                
             </DataGrid.Columns>
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
@@ -59,52 +51,59 @@
             <Button Content="Добавить команду" Margin="0 0 0 20" Click="btnAddTeamClick"/>
             <Button Content="Добавить сотрудника" Margin="0 0 0 20" Click="btnShowAddUserClick"/>
 
-            <StackPanel x:Name="spAddUser" Visibility="Hidden">
-                <TextBlock Text="Добавление сотрудника" Style="{StaticResource BlackBlock}" HorizontalAlignment="Center" Margin="15"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Введите имя:" Style="{StaticResource BlackBlock}"/>
-                    <TextBox Width="150" Height="30" Text="{Binding FirstName}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Введите фамилию:" Style="{StaticResource BlackBlock}"/>
-                    <TextBox Width="150" Height="30" Text="{Binding SecondName}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Введите отчество:" Style="{StaticResource BlackBlock}"/>
-                    <TextBox Width="150" Height="30" Text="{Binding Patronymic}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Введите логин:" Style="{StaticResource BlackBlock}"/>
-                    <TextBox Width="150" Height="30" Text="{Binding Login}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Введите пароль:" Style="{StaticResource BlackBlock}"/>
-                    <TextBox Width="150" Height="30" Text="{Binding Password}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Выберите пол:" Style="{StaticResource BlackBlock}"/>
-                    <ComboBox Width="150" Height="30" DisplayMemberPath="Name" Name="cbGender" SelectedItem="{Binding Gender}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Выберите специализацию:" Style="{StaticResource BlackBlock}"/>
-                    <ComboBox Width="150" Height="30" DisplayMemberPath="Name" Name="cbSpecialization" SelectedItem="{Binding Specialization}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Выберите группу:" Style="{StaticResource BlackBlock}"/>
-                    <ComboBox Width="150" Height="30" Name="cbTeam" SelectedItem="{Binding ProjectTeam}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Команда №"/>
-                                    <TextBlock Text="{Binding Id}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <Button Content="Сохранить" Margin="0 15 0 0" Width="150" Click="btnAddNewUserClick"/>
-            </StackPanel>
+            <Grid x:Name="spAddUser" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Добавление сотрудника" Style="{StaticResource BlackBlock}" HorizontalAlignment="Center" Margin="15"  Grid.ColumnSpan="2"/>
+                
+                <TextBlock Text="Введите имя:" Style="{StaticResource BlackBlock}" Grid.Row="1"/>
+                <TextBox Width="150" Height="30" Text="{Binding FirstName}" Style="{StaticResource EditBox}" Grid.Row="1"  Grid.Column="1" Margin="5"/>
+                
+                <TextBlock Text="Введите фамилию:" Style="{StaticResource BlackBlock}" Grid.Row="2"/>
+                <TextBox Width="150" Height="30" Text="{Binding SecondName}" Style="{StaticResource EditBox}" Grid.Row="2"  Grid.Column="1" Margin="5"/>
+                
+                <TextBlock Text="Введите отчество:" Style="{StaticResource BlackBlock}" Grid.Row="3"/>
+                <TextBox Width="150" Height="30" Text="{Binding Patronymic}" Style="{StaticResource EditBox}" Grid.Row="3" Grid.Column="1" Margin="5"/>
+                
+                <TextBlock Text="Введите логин:" Style="{StaticResource BlackBlock}" Grid.Row="4"/>
+                <TextBox Width="150" Height="30" Text="{Binding Login}" Style="{StaticResource EditBox}" Grid.Row="4" Grid.Column="1" Margin="5"/>
+                
+                <TextBlock Text="Введите пароль:" Style="{StaticResource BlackBlock}" Grid.Row="5"/>
+                <TextBox Width="150" Height="30" Text="{Binding Password}" Style="{StaticResource EditBox}"  Grid.Row="5" Grid.Column="1" Margin="5"/>
+                
+                <TextBlock Text="Выберите пол:" Style="{StaticResource BlackBlock}" Grid.Row="6"/>
+                <ComboBox Width="150" Height="30" DisplayMemberPath="Name" Name="cbGender" SelectedItem="{Binding Gender}" Grid.Row="6" Grid.Column="1"/>
+                
+                <TextBlock Text="Выберите специализацию:" Style="{StaticResource BlackBlock}" Grid.Row="7"/>
+                <ComboBox Width="150" Height="30" DisplayMemberPath="Name" Name="cbSpecialization" SelectedItem="{Binding Specialization}" Grid.Row="7" Grid.Column="1"/>
+                <TextBlock Text="Выберите группу:" Style="{StaticResource BlackBlock}" Grid.Row="8"/>
+                <ComboBox Width="150" Height="30" Name="cbTeam" SelectedItem="{Binding ProjectTeam}" Grid.Row="8" Grid.Column="1">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Команда №"/>
+                                <TextBlock Text="{Binding Id}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Content="Сохранить" HorizontalAlignment="Center" Margin="30" Width="150" Click="btnAddNewUserClick" Grid.ColumnSpan="2" Grid.Row="9"/>
+            </Grid>
         </StackPanel>
-        
+
     </Grid>
 </Page>

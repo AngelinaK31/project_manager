@@ -62,12 +62,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectManagerApp\ProjectManagerApp.csproj">
-      <Project>{6E21A3C9-5449-43CE-A984-D5A22CB0ECB7}</Project>
-      <Name>ProjectManagerApp</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

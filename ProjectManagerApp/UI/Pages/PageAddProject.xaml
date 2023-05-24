@@ -21,17 +21,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 20">
-                <TextBlock Style="{StaticResource BlackBlock}" Text="Команда разработчиков " VerticalAlignment="Center"/>
-                <ComboBox Width="150" Height="30" Name="cbProjectTeam" SelectedItem="{Binding ProjectTeam}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Команда №"/>
-                                <TextBlock Text="{Binding Id}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                <TextBlock Style="{StaticResource BlackBlock}" Text="Команда разработчиков - " VerticalAlignment="Center"/>
+                <TextBlock x:Name="tbTeam"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 20 5 5">

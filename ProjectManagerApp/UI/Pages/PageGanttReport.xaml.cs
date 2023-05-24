@@ -1,5 +1,6 @@
 ﻿using nGantt.GanttChart;
 using nGantt.PeriodSplitter;
+using ProjectManagerApp.UI.Casements;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -94,9 +95,43 @@ namespace ProjectManagerApp.UI.Pages
         private void btnFormDiagClick(object sender, RoutedEventArgs e)
         {
             gantReport.ClearGantt();
+            if(cbProjects.SelectedItem == null)
+            {
+                CustomMessageBox.Show("Внимание", "Выберите проект");
+                return;
+            }
             var selectedProject = cbProjects.SelectedItem as Entities.Project;
-            // Set selection -mode
-            gantReport.TaskSelectionMode = nGantt.GanttControl.SelectionMode.Single;
+
+            DateTime minDate = (DateTime)dpStartDate.SelectedDate;
+            DateTime maxDate = (DateTime)dpEndDate.SelectedDate;
+
+            if (dpStartDate.SelectedDate == null || dpEndDate.SelectedDate == null)
+            {
+                CustomMessageBox.Show("Внимание", "Выберите дату");
+                return;
+            }
+            if (dpStartDate.SelectedDate > dpEndDate.SelectedDate)
+            {
+                CustomMessageBox.Show("Внимание", "Дата начала не может быть позже даты окончания отчетного периода");
+                return;
+            }
+
+            int tasksPerSelectedDates=0;
+            foreach (var projectTask in selectedProject.Tasks)
+            {
+                if (projectTask.CreationDate > maxDate || projectTask.Deadline < minDate)
+                {
+                    tasksPerSelectedDates++;
+                }
+            }
+            if(tasksPerSelectedDates == selectedProject.Tasks.Count())
+            {
+                CustomMessageBox.Show("Внимание", "За данный отчетный период отсутсвуют задачи");
+                return;
+            }
+
+                // Set selection -mode
+                gantReport.TaskSelectionMode = nGantt.GanttControl.SelectionMode.Single;
             // Enable GanttTasks to be selected
             gantReport.AllowUserSelection = true;
 
@@ -113,14 +148,9 @@ namespace ProjectManagerApp.UI.Pages
             selectionContextMenuItems.Add(new SelectionContextMenuItem(NewClicked, "New..."));
             gantReport.SelectionContextMenuItems = selectionContextMenuItems;
 
-            if(dpStartDate.SelectedDate == null || dpEndDate.SelectedDate == null)
-            {
-                MessageBox.Show("Выберите дату");
-                return;
-            }
             
-            DateTime minDate = (DateTime)dpStartDate.SelectedDate;
-            DateTime maxDate = (DateTime)dpEndDate.SelectedDate;
+            
+            
             gantReport.Initialize(minDate, maxDate);
 
 

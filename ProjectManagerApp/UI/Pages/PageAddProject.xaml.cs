@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectManagerApp.Classes;
+using ProjectManagerApp.UI.Casements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,28 +28,43 @@ namespace ProjectManagerApp.UI.Pages
             InitializeComponent();
             _project.CreationDate = DateTime.Now;
             _project.Deadline = DateTime.Now;
+            _project.ProjectTeamId = (int)UserHolder.User.ProjectTeamId;
             DataContext = _project;
+
+            tbTeam.Text = UserHolder.User.ProjectTeamId.ToString();
             
-            
-            cbProjectTeam.ItemsSource = App.DataBase.ProjectTeams.ToList();
         }
 
         private void btnAddProjectClick(object sender, RoutedEventArgs e)
         {
             _project.IsCompleted = false;
 
+            if (_project.Deadline < _project.CreationDate)
+            {
+                MessageBox.Show("Дедлайн не может быть до начала создания проекта");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(_project.Name))
+            {
+                MessageBox.Show("Ввдите наименование проекта");
+                return;
+            }
+
             App.DataBase.Projects.Add(_project);
+           
             try
             {
                 App.DataBase.SaveChanges();
-                Casements.CustomMessageBox messageBox = new Casements.CustomMessageBox("Сообщение", "Проект успешно добавлен");
-                messageBox.ShowDialog();
+                CustomMessageBox.Show("Сообщение", "Проект успешно добавлен");
+                Manager._frame.Navigate(new PageProject(_project));
             }
             catch (Exception ex)
             {
-                Casements.CustomMessageBox messageBox = new Casements.CustomMessageBox("Ошибка", ex.ToString());
-                messageBox.ShowDialog();
+                CustomMessageBox.Show("Ошибка", ex.ToString());
             }
         }
+
+       
+
     }
 }

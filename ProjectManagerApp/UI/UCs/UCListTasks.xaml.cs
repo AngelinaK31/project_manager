@@ -1,4 +1,5 @@
 ﻿using ProjectManagerApp.Classes;
+using ProjectManagerApp.Entities;
 using ProjectManagerApp.UI.Casements;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace ProjectManagerApp.UI.UCs
     /// </summary>
     public partial class UCListTasks : UserControl
     {
+        public List<Entities.Task> Tasks { get; set; } 
+        public Status Status { get; set; }
         public UCListTasks()
         {
             InitializeComponent();
@@ -30,7 +33,9 @@ namespace ProjectManagerApp.UI.UCs
             if(UserHolder.User.TypeOfUserId != 1)
             {
                 btnAddTask.Visibility = Visibility.Collapsed;
+                
             }
+            DataContext = this;
         }
 
         private void lvPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -44,7 +49,8 @@ namespace ProjectManagerApp.UI.UCs
         private void ListViewItem_MouseMove(object sender, MouseEventArgs e)
         {
             var task = (Entities.Task)(sender as ListViewItem).DataContext;
-            if (e.LeftButton == MouseButtonState.Pressed && UserHolder.User == task.User)
+            if (e.LeftButton == MouseButtonState.Pressed && (UserHolder.User == task.User | 
+                  (UserHolder.User.TypeOfUserId == 1 && task.StatusId == 3)))
             {
                 DragDrop.DoDragDrop(sender as ListViewItem, new DataObject(DataFormats.Serializable, (sender as ListViewItem).DataContext), DragDropEffects.Move);
             }
@@ -56,19 +62,29 @@ namespace ProjectManagerApp.UI.UCs
             {
                 CustomMessageBox.Show("Внимание", "Вы не можете изменять статус задач!");
             }
+            
         }
 
         private void lvTasksToDo_Drop(object sender, DragEventArgs e)
         {
-            Entities.Status list = (sender as ListView).DataContext as Entities.Status;
+            UCListTasks list = (sender as ListView).DataContext as UCListTasks;
             var task = e.Data.GetData(DataFormats.Serializable) as Entities.Task;
-
-
+            var currentStatus = list.Status;
+            if(UserHolder.User.TypeOfUserId == 1 && task.StatusId == 3 &&  list.Status.Id != 4)
+            {
+                CustomMessageBox.Show("Внимание", "Вы можете изменить статус задачи только на завершено");
+                return;
+            }
+            else if(UserHolder.User == task.User && list.Status.Id == 4)
+            {
+                CustomMessageBox.Show("Внимание", "Вы не можете завершить задачу без проверки. Обратитесь к менеджеру проекта.");
+                return;
+            }
             Entities.Status statusTaskToRemove = App.DataBase.Status.FirstOrDefault(s=>s.Id == task.StatusId);
             statusTaskToRemove.Tasks.Remove(task);
-            
+            currentStatus.Tasks.Add(task);
             list.Tasks.Add(task);
-            task.StatusId = list.Id;
+            task.StatusId = list.Status.Id;
 
             if (task.StatusId == 4)
             {
@@ -81,14 +97,12 @@ namespace ProjectManagerApp.UI.UCs
 
             App.DataBase.SaveChanges();
             Manager._frame.Navigate(new Pages.PageProject(task.Project));
+            
         }
 
         private void btnAddTaskClick(object sender, RoutedEventArgs e)
-        {
-          
+        {       
                 Manager._frame.Navigate(new Pages.PageTask(null, this.DataContext as Entities.Status));
-
-            
         }
 
         

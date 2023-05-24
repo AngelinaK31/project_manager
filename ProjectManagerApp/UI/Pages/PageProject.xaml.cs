@@ -1,8 +1,11 @@
 ﻿using ProjectManagerApp.Classes;
 using ProjectManagerApp.Entities;
+using ProjectManagerApp.UI.Casements;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms.VisualStyles;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -29,24 +33,46 @@ namespace ProjectManagerApp.UI.Pages
         {
             InitializeComponent();
 
-            lvCurrentProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == false).ToList();
-            lvOldProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == true).ToList();
-
-
-
-            if(UserHolder.User.TypeOfUserId != 1)
+            if (UserHolder.User.TypeOfUserId == 3)
             {
-                spEditProject.Visibility = Visibility.Hidden; 
+                lvCurrentProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == false).ToList();
+                lvOldProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == true).ToList();
+            }
+            else
+            {
+                lvCurrentProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == false && p.ProjectTeam.Id == UserHolder.User.ProjectTeamId).ToList();
+                lvOldProjects.ItemsSource = App.DataBase.Projects.Where(p => p.IsCompleted == true && p.ProjectTeam.Id == UserHolder.User.ProjectTeamId).ToList();
+
+            }
+
+            if (UserHolder.User.TypeOfUserId != 1)
+            {
+                spEditProject.Visibility = Visibility.Hidden;
                 spEditProject.IsEnabled = false;
                 btnAddProject.Visibility = Visibility.Collapsed;
             }
 
-            if(project == null)
+            if (project == null)
             {
                 spProjects.Visibility = Visibility.Visible;
+                return;
             }
-            else
+
+            
+
+
+          
+
+            if (project.Tasks.Count()>0 && project.Tasks.Where(t=>t.StatusId == 4).Count() == project.Tasks.Count())
             {
+                if (CustomMessageBoxYesNo.Show("Сообщение","Все задачи выполнены. Завершить проект?"))
+                {
+                    _project.IsCompleted = true;
+                    _project.CompletionDate = DateTime.Now.Date;
+                    App.DataBase.SaveChanges();
+                }
+            }
+
                 _project = project;
                 DataContext = project;
 
@@ -55,31 +81,23 @@ namespace ProjectManagerApp.UI.Pages
                     spDescription.Visibility = Visibility.Collapsed;
                 }
 
-                var currentProjectTasks = App.DataBase.Tasks.Where(p => p.Project.Id == project.Id).ToList();
-                var currentProjectToRemove = App.DataBase.Tasks.Where(p => p.Project.Id != project.Id).ToList();
-                var tasks = new List<List<Entities.Task>>();
-                var statuses = App.DataBase.Status.ToList();
-                var currentstatuses = new List<Status>();
+                List<Entities.Task> currentProjectTasks = App.DataBase.Tasks.Where(t=> t.ProjectId == project.Id).ToList();
 
-                foreach (var status in statuses)
-                {
-                    status.Tasks = currentProjectTasks.Where(p => p.Status == status).ToList();
-                }
-                spTasks.ItemsSource = statuses;
+                listStat1.Status = App.DataBase.Status.First(s => s.Id == 1);
+                listStat1.Tasks = currentProjectTasks.Where(t=>t.StatusId == 1).ToList();
+                listStat2.Status = App.DataBase.Status.First(s => s.Id == 2);
+                listStat2.Tasks = currentProjectTasks.Where(t => t.StatusId == 2).ToList();
+                listStat3.Status = App.DataBase.Status.First(s => s.Id == 3);
+                listStat3.Tasks = currentProjectTasks.Where(t => t.StatusId == 3).ToList();
+                listStat4.Status = App.DataBase.Status.First(s => s.Id == 4);
+                listStat4.Tasks = currentProjectTasks.Where(t => t.StatusId == 4).ToList();
 
-                float laborCost = LaborCost.CalcLaborCost(project);
+                var laborCost = LaborCost.CalcLaborCost(project);
                 tblLaborCost.Text = $"Трудозатраты - {laborCost}ч.";
-            }
-
            
-
-        }
-        private void cellDGTasksMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-
         }
 
+       
         private void btnEditInfoClick(object sender, RoutedEventArgs e)
         {
             tbxName.IsEnabled = true;
@@ -105,13 +123,19 @@ namespace ProjectManagerApp.UI.Pages
             var currentProject = _project;
             if(currentProject.Deadline < currentProject.CreationDate)
             {
-                MessageBox.Show("Дейдлайн не может быть до начала создания проекта");
+                MessageBox.Show("Дедлайн не может быть до начала создания проекта");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(currentProject.Name))
+            {
+                MessageBox.Show("Ввдите наименование проекта");
                 return;
             }
             try
             {
                 if (currentProject != null)
                 {
+                    
                     App.DataBase.SaveChanges();
                     MessageBox.Show("Изменения сохранены!");
                     this.InitializeComponent();
@@ -123,7 +147,7 @@ namespace ProjectManagerApp.UI.Pages
             }
         }
 
-
+      
 
         private void btnHideInfoClick(object sender, RoutedEventArgs e)
         {
@@ -133,10 +157,12 @@ namespace ProjectManagerApp.UI.Pages
         private void btnShowInfoClick(object sender, RoutedEventArgs e)
         {
             gInfo.Visibility = Visibility.Visible;
+            
         }
 
         private void btnAddProjectClick(object sender, RoutedEventArgs e)
         {
+           
             Manager._frame.Navigate(new PageAddProject());
         }
 
@@ -158,14 +184,14 @@ namespace ProjectManagerApp.UI.Pages
         private void ListViewItemCLick(object sender, MouseButtonEventArgs e)
         {
             spProjects.Visibility = Visibility.Collapsed;
-            Manager._frame.Navigate(new Pages.PageProject(((ListViewItem)sender).DataContext as Entities.Project));
+            Manager._frame.Navigate(new PageProject(((ListViewItem)sender).DataContext as Project));
             
         }
 
         private void btnDelProjectClick(object sender, RoutedEventArgs e)
         {
             var tasks = _project.Tasks.ToList();
-            if(Casements.CustomMessageBoxYesNo.Show("Предупреждение", "Вы точно хотите удалить этот проект?"))
+            if(CustomMessageBoxYesNo.Show("Предупреждение", "Вы точно хотите удалить этот проект?"))
             {
                if(tasks.Count > 0)
                 {
@@ -177,20 +203,17 @@ namespace ProjectManagerApp.UI.Pages
                 App.DataBase.Projects.Remove(_project);
                 try
                 {
+                    
                     App.DataBase.SaveChanges();
-                    Casements.CustomMessageBox.Show("Успешно", "Проект успешно удален");
+                    CustomMessageBox.Show("Успешно", "Проект успешно удален");
                     Manager._frame.Navigate(new PageProject(null));
                 }
                 catch(Exception ex)
                 {
-                    Casements.CustomMessageBox.Show("Ошибка", ex.Message.ToString());
+                    CustomMessageBox.Show("Ошибка", ex.Message.ToString());
                 }
             }
-            else
-            {
-                Casements.CustomMessageBox.Show("нет", "нет");
-
-            }
+            
 
         }
 
