@@ -25,6 +25,7 @@ namespace ProjectManagerApp.UI.UCs
     public partial class UCListTasks : UserControl
     {
         public List<Entities.Task> Tasks { get; set; } 
+        public Brush Color { get; set; }
         public Status Status { get; set; }
         public UCListTasks()
         {
@@ -36,6 +37,7 @@ namespace ProjectManagerApp.UI.UCs
                 
             }
             DataContext = this;
+            
         }
 
         private void lvPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

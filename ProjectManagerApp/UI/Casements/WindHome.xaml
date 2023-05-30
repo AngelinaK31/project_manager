@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagerApp.UI.Casements"
         mc:Ignorable="d"
-        Title="Менеджер проектов" MinHeight="600" MinWidth="1000" WindowStartupLocation="CenterScreen"
+        Title="Менеджер проектов" MinHeight="600" MinWidth="1080" WindowStartupLocation="CenterScreen"
          Style="{DynamicResource WindowStyle}">
     <Window.Resources>
         <ResourceDictionary>
@@ -66,10 +66,7 @@
                 </StackPanel>
 
                 <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 5">
-                    <Button Background="Transparent" BorderBrush="Transparent">
-                        <Image Source="/Resources/settings.png" Width="30"/>
-                        
-                    </Button>
+                    
                     <Button Background="Transparent" BorderBrush="Transparent" Click="btnExitClick">
                         <Image Source="/Resources/exit.png" Width="30"/>
                     </Button>

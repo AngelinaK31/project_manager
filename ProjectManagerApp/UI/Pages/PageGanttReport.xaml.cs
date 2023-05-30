@@ -94,6 +94,7 @@ namespace ProjectManagerApp.UI.Pages
 
         private void btnFormDiagClick(object sender, RoutedEventArgs e)
         {
+            btnPrint.Visibility = Visibility.Collapsed;
             gantReport.ClearGantt();
             if(cbProjects.SelectedItem == null)
             {
@@ -129,7 +130,7 @@ namespace ProjectManagerApp.UI.Pages
                 CustomMessageBox.Show("Внимание", "За данный отчетный период отсутсвуют задачи");
                 return;
             }
-
+            btnPrint.Visibility = Visibility.Visible;
                 // Set selection -mode
                 gantReport.TaskSelectionMode = nGantt.GanttControl.SelectionMode.Single;
             // Enable GanttTasks to be selected
@@ -181,6 +182,25 @@ namespace ProjectManagerApp.UI.Pages
             
             
 
+        }
+
+        private void btnPrintClick(object sender, RoutedEventArgs e)
+        {
+            
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(gantReport, "Распечатка диаграммы Ганта");
+                CustomMessageBox.Show("Сообщение", "Документ успешно напечатан");
+            }
+        }
+
+        private void dpStartDateSelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var startDate = (DateTime)dpStartDate.SelectedDate;
+            var endDate = startDate.AddDays(30);
+            dpEndDate.DisplayDateStart = startDate;
+            dpEndDate.DisplayDateEnd = endDate;
         }
     }
 }

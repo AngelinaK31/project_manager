@@ -31,7 +31,7 @@
 
        
 
-        <ListView Grid.Row="1">
+        <ListView Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4"/>
@@ -51,16 +51,16 @@
             </ListView.ItemContainerStyle>
 
             <ListViewItem>
-                <local1:UCListTasks x:Name="listStat1"/>
+                <local1:UCListTasks x:Name="listStat1" Color="{StaticResource LightBrown}"/>
             </ListViewItem>
             <ListViewItem>
-                <local1:UCListTasks x:Name="listStat2"/>
+                <local1:UCListTasks x:Name="listStat2" Color="{StaticResource Brown}"/>
             </ListViewItem>
             <ListViewItem>
-                <local1:UCListTasks x:Name="listStat3"/>
+                <local1:UCListTasks x:Name="listStat3" Color="{StaticResource Blue}"/>
             </ListViewItem>
             <ListViewItem>
-                <local1:UCListTasks x:Name="listStat4"/>
+                <local1:UCListTasks x:Name="listStat4" Color="{StaticResource DarkBlue}"/>
             </ListViewItem>
         </ListView>
 

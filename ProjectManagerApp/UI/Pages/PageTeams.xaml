@@ -105,5 +105,7 @@
             </Grid>
         </StackPanel>
 
+        <Button Content="Вывести список сотрудников на печать" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="1" Margin="15" Click="btnPrintClick"/> 
+
     </Grid>
 </Page>
